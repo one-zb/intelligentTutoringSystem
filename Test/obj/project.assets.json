@@ -1,0 +1,307 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Core/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ITSText": "1.0.0",
+          "Translations": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Core.dll": {}
+        }
+      },
+      "DiagramEditor/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Core": "1.0.0",
+          "Translations": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/DiagramEditor.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DiagramEditor.dll": {}
+        }
+      },
+      "FVCClient/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "ITSEngine": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FVCClient.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FVCClient.dll": {}
+        }
+      },
+      "GUI/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Core": "1.0.0",
+          "DiagramEditor": "1.0.0",
+          "Translations": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GUI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GUI.dll": {}
+        }
+      },
+      "ITSEngine/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Core": "1.0.0",
+          "ITSText": "1.0.0",
+          "MathSolvers": "1.0.0",
+          "SymbolicMath": "1.0.0",
+          "Translations": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ITSEngine.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ITSEngine.dll": {}
+        }
+      },
+      "ITSText/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/ITSText.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ITSText.dll": {}
+        }
+      },
+      "KRLabConsole/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "Core": "1.0.0",
+          "ITSEngine": "1.0.0",
+          "ITSText": "1.0.0",
+          "MathSolvers": "1.0.0",
+          "Utilities": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/KRLabConsole.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/KRLabConsole.dll": {}
+        }
+      },
+      "MathSolvers/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "SymbolicMath": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/MathSolvers.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MathSolvers.dll": {}
+        }
+      },
+      "SymbolicMath/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/SymbolicMath.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SymbolicMath.dll": {}
+        }
+      },
+      "Translations/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Translations.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Translations.dll": {}
+        }
+      },
+      "Utilities/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/Utilities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Utilities.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Core/1.0.0": {
+      "type": "project",
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
+    },
+    "DiagramEditor/1.0.0": {
+      "type": "project",
+      "path": "../DiagramEditor/DiagramEditor.csproj",
+      "msbuildProject": "../DiagramEditor/DiagramEditor.csproj"
+    },
+    "FVCClient/1.0.0": {
+      "type": "project",
+      "path": "../FVCClient/FVCClient.csproj",
+      "msbuildProject": "../FVCClient/FVCClient.csproj"
+    },
+    "GUI/1.0.0": {
+      "type": "project",
+      "path": "../GUI/GUI.csproj",
+      "msbuildProject": "../GUI/GUI.csproj"
+    },
+    "ITSEngine/1.0.0": {
+      "type": "project",
+      "path": "../ITSEngine/ITSEngine.csproj",
+      "msbuildProject": "../ITSEngine/ITSEngine.csproj"
+    },
+    "ITSText/1.0.0": {
+      "type": "project",
+      "path": "../TextProcessor/ITSText.csproj",
+      "msbuildProject": "../TextProcessor/ITSText.csproj"
+    },
+    "KRLabConsole/1.0.0": {
+      "type": "project",
+      "path": "../KRLabConsole/KRLabConsole.csproj",
+      "msbuildProject": "../KRLabConsole/KRLabConsole.csproj"
+    },
+    "MathSolvers/1.0.0": {
+      "type": "project",
+      "path": "../MathSolvers/MathSolvers.csproj",
+      "msbuildProject": "../MathSolvers/MathSolvers.csproj"
+    },
+    "SymbolicMath/1.0.0": {
+      "type": "project",
+      "path": "../SymbolicMath/SymbolicMath.csproj",
+      "msbuildProject": "../SymbolicMath/SymbolicMath.csproj"
+    },
+    "Translations/1.0.0": {
+      "type": "project",
+      "path": "../Translations/Translations.csproj",
+      "msbuildProject": "../Translations/Translations.csproj"
+    },
+    "Utilities/1.0.0": {
+      "type": "project",
+      "path": "../Utilities/Utilities.csproj",
+      "msbuildProject": "../Utilities/Utilities.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "Core >= 1.0.0",
+      "DiagramEditor >= 1.0.0",
+      "FVCClient >= 1.0.0",
+      "GUI >= 1.0.0",
+      "ITSEngine >= 1.0.0",
+      "ITSText >= 1.0.0",
+      "KRLabConsole >= 1.0.0",
+      "MathSolvers >= 1.0.0",
+      "SymbolicMath >= 1.0.0",
+      "Translations >= 1.0.0",
+      "Utilities >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj",
+      "projectName": "Test",
+      "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "projectReferences": {
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+            },
+            "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+              "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

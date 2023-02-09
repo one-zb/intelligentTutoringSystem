@@ -1,0 +1,320 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj",
+        "frameworks": {
+          "net45": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj",
+        "projectName": "DiagramEditor",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj",
+        "frameworks": {
+          "net46": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net46": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj",
+        "projectName": "FVCClient",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj",
+        "projectName": "GUI",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj",
+        "frameworks": {
+          "net46": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net46": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj",
+        "projectName": "ITSEngine",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj",
+        "projectName": "KRLabConsole",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj",
+        "projectName": "MathSolvers",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj",
+        "frameworks": {
+          "net472": {
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj"
+              }
+            }
+          }
+        }
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj",
+        "projectName": "SymbolicMath",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj"
+      },
+      "frameworks": {
+        "net472": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj",
+        "projectName": "Test",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\Test.csproj",
+        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\DiagramEditor\\DiagramEditor.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\FVCClient\\FVCClient.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\GUI\\GUI.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\ITSEngine\\ITSEngine.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\KRLabConsole\\KRLabConsole.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\MathSolvers\\MathSolvers.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\SymbolicMath\\SymbolicMath.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+              },
+              "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+                "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj",
+        "projectName": "ITSText",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\TextProcessor\\ITSText.csproj"
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj",
+        "projectName": "Translations",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Translations\\Translations.csproj"
+      },
+      "frameworks": {
+        "net40-client": {}
+      }
+    },
+    "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj": {
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj",
+        "projectName": "Utilities",
+        "projectPath": "C:\\Users\\Administrator\\Desktop\\老师项目\\20211117-有理数乘法\\Utilities\\Utilities.csproj"
+      },
+      "frameworks": {
+        "net45": {}
+      }
+    }
+  }
+}
