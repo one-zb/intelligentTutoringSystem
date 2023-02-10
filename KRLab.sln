@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SymbolicMath", "SymbolicMat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathSolvers", "MathSolvers\MathSolvers.csproj", "{D44C5905-51AF-4F34-94A9-61A71588D807}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDI", "..\老师项目资料\我的代码\GDI-L\GDI\GDI\GDI.csproj", "{83FCB71D-5F03-4F29-A0A8-FB99DCBFB2F3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDI", "GDI\GDI\GDI.csproj", "{83FCB71D-5F03-4F29-A0A8-FB99DCBFB2F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

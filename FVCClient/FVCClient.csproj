@@ -174,7 +174,11 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\老师项目资料\我的代码\GDI-L\GDI\GDI\GDI.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{8cf10505-3c2e-4e45-ab90-21613237b412}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDI\GDI\GDI.csproj">
       <Project>{83fcb71d-5f03-4f29-a0a8-fb99dcbfb2f3}</Project>
       <Name>GDI</Name>
     </ProjectReference>
