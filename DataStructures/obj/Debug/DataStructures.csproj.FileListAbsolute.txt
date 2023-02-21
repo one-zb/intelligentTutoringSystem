@@ -1,5 +1,0 @@
-E:\KRLab17\DataStructures\obj\Debug\DataStructures.csproj.CoreCompileInputs.cache
-E:\KRLab17\DataStructures\bin\Debug\DataStructures.dll
-E:\KRLab17\DataStructures\bin\Debug\DataStructures.pdb
-E:\KRLab17\DataStructures\obj\Debug\DataStructures.dll
-E:\KRLab17\DataStructures\obj\Debug\DataStructures.pdb
