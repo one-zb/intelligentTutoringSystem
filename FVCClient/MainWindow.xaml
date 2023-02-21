@@ -20,7 +20,7 @@
         />
         <term:InputTextBox x:Name="AnswerInputBox" FontFamily="Courier New" FontSize="18"
 				IsPromptInsertedAtLaunch="False" IsSystemBeepEnabled="True"
-                Margin="10,406,10,-21" AcceptsReturn="True"
+                Margin="10,406,10,157" AcceptsReturn="True"
 				VerticalScrollBarVisibility="Visible"  Background="Cornsilk"           
         />
 
