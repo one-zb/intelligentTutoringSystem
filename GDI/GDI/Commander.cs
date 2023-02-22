@@ -25,7 +25,7 @@ namespace GDI
         static readonly Graphics graph = Graphics.FromImage(bmp);
         static GDILib myGDI = new GDILib(graph);
 
-        const string imagePath = @"C:\Users\Administrator\Desktop\老师项目\image\test.png";
+        const string imagePath = @"C:\Users\10114\Desktop\大论文\20221204老师项目\老师项目\image\test.png";
 
 
         // 存储图片路径

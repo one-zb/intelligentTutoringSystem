@@ -348,6 +348,16 @@ namespace FVCClient
         {
 
 
+
+
+
+
+
+
+
+
+
+
             base.OnPreviewKeyDown(e);
             if (Keyboard.IsKeyDown(Key.F3))
             {
