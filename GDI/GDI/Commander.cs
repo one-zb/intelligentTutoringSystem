@@ -20,7 +20,7 @@ namespace GDI
 
         // 在这里修改参数，可以调整图片显示在界面的清晰度，尽量跟OutputTextBox类中image参数接近
         // 这里设为600 400 image.width设为400 是清晰图片，
-        static readonly Bitmap bmp = new Bitmap(600, 400);
+        static readonly Bitmap bmp = new Bitmap(600, 500);
 
         static readonly Graphics graph = Graphics.FromImage(bmp);
         static GDILib myGDI = new GDILib(graph);
@@ -57,7 +57,7 @@ namespace GDI
 
         // 化学类 二氧化硫制备实验图 测试通过
         [CMD("sulfur dioxide experiment")]
-        static public void DrawSO2(int flag)
+        static public void DrawCreateSO2Experiment(int flag)
         {
 
             myGDI.DrawSO2();
@@ -91,6 +91,100 @@ namespace GDI
             }
 
         }
+
+
+
+
+        // 在已知三角形ABC中任取一点O 测试通过
+        [CMD("tranglefreepoint")]
+        static public void DrawFreePointInTrangle(string A, string B, string C, string O, int flag)
+        {
+
+            myGDI.DrawFreePointInTrangle(A, B, C, O);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
+
+
+
+        // 在已知线段AB上随机取一个点0 测试通过
+        [CMD("linefreepoint")]
+        static public void DrawFreePoint(string A, string B, string O, int flag)
+        {
+
+            myGDI.DrawFreePoint(A, B, O);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
+
+
+        // 画一个角ABC的角平分线BO 测试通过
+        [CMD("anglebisector")]
+        static public void DrawAngleBisector(string A, string B, string C, string O, int flag)
+        {
+
+            myGDI.DrawAngleBisector(A, B, C, O);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
+        // 在一个正方形ABCD或者矩形内任取一个点O 测试通过
+        [CMD("insidepoint")]
+        static public void DrawFreePoint(string A, string B, string C, string D, string O, int flag)
+        {
+
+            myGDI.DrawFreePoint(A, B, C, D, O);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
+
+        // 画一个任意凸四边形ABCD 测试通过
+        [CMD("tusquare")]
+        static public void DrawTuSquare(string A, string B, string C, string D, int flag)
+        {
+
+            myGDI.DrawTuSquare(A, B, C, D);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+        // 在已知的一个四边形中，在其中的AB一条边的外边画一个点C 测试通过
+        [CMD("outsidepoint")]
+        static public void DrawPointOutSide(string A, string B, string C, int flag)
+        {
+
+            myGDI.DrawPointOutSide(A, B, C);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+        // 
+
 
 
 
@@ -202,7 +296,7 @@ namespace GDI
 
         //随机画一个点 测试已通过
         [CMD("freepoint")]
-        static public void FreePoint(string pointName, int flag)
+        static public void DrawFreePoint(string pointName, int flag)
         {
              
             //myGDI = new GDILib(Test.test.pictureBox1.CreateGraphics());
@@ -277,7 +371,7 @@ namespace GDI
         }
 
 
-        // 画已知两条直线的交点 并且显示交点
+        // 画已知两条直线的交点 并且显示交点 测试通过
         [CMD("insertpoint")]
         static public void DrawInsertPoint(string A, string B, string C, string D, string F, int flag)
         {

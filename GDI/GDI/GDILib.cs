@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 
@@ -37,6 +38,10 @@ namespace GDI
             //g.Clear(System.Drawing.Color.White);
         }
 
+        /// <summary>
+        /// 化学实验
+        /// </summary>
+
         // 化学
         // 二氧化硫制备实验图 测试通过
         public void DrawSO2()
@@ -71,8 +76,250 @@ namespace GDI
 
 
 
-        // 画三角形的角平分线 TODO
 
+
+        /// <summary>
+        /// 数学 初中平面几何
+        /// </summary>
+        /// 
+
+
+        // 在已知三角形ABC中任取一点 0 测试通过
+        public void DrawFreePointInTrangle(string A, string B, string C, string O)
+        {
+            if(g != null)
+            {
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+                Point pointC = nameToPoint[C];
+
+                //三角形顶点
+                Vector3 AA = new Vector3(pointA.X, pointA.Y, 0);
+                Vector3 BB = new Vector3(pointB.X, pointB.Y, 0);
+                Vector3 CC = new Vector3(pointC.Y, pointC.Y, 0);
+
+                //边向量
+                Vector3 e1 = BB - AA;
+                Vector3 e2 = CC - AA;
+
+                //随机数生成器
+                Random random = new Random();
+
+                //随机坐标
+                float x = (float)random.NextDouble();
+                float y = (float)random.NextDouble();
+
+                //反射处理
+                if (x + y > 1)
+                {
+                    x = 1 - x;
+                    y = 1 - y;
+                }
+
+                //随机点
+                Vector3 p = x * e1 + y * e2 + AA;
+                Point freePoint = new Point((int)p.X,(int)p.Y);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, freePoint.X, freePoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, freePoint.X, freePoint.Y + 10);
+
+            }
+        }
+        
+
+
+        // 在已知线段上AB随机取一个点0 测试通过
+        public void DrawFreePoint(string A, string B, string O)
+        {
+            if(g != null)
+            {
+                // 拿到这两点 AB坐标
+                Point start = nameToPoint[A];
+                Point end = nameToPoint[B];
+                ;
+                // 随机数 r
+                Random random = new Random();
+                double r = random.NextDouble();
+                Point freePoint = new Point();
+                freePoint.X = (int)(start.X + (int)(end.X - start.X) * r);
+                freePoint.Y = (int)(start.Y + (int)(end.Y - start.Y) * r);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, freePoint.X, freePoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, freePoint.X, freePoint.Y + 10);
+            }
+        }
+
+        // 画三角形的∠ABC的角平分线 B点是开始点，两边分别是BA BC 测试通过
+        public void DrawAngleBisector(string A, string B, string C, string O)
+        {
+            if(g != null)
+            {
+                Point start = nameToPoint[B];
+                Point end1 = nameToPoint[A];
+                Point end2 = nameToPoint[C];
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+                // 计算两条边的夹角（弧度）
+                double angle = Math.Atan2(end2.Y - start.Y, end2.X - start.X) - Math.Atan2(end1.Y - start.Y, end1.X - start.X);
+                // 计算角平分线与Y轴正方向的夹角（弧度）
+                double bisectorAngle = Math.Atan2(end1.Y - start.Y, end1.X - start.X) + angle / 2;
+                // 计算角平分线上的一个点的坐标（假设Y坐标差为50）
+                int dy = 50;
+                int dx = (int)(dy / Math.Tan(bisectorAngle));
+
+                Point bisectorPoint = new Point();
+                if (start.Y < end1.Y && start.Y < end2.Y)
+                {
+                    // 如果这个起始点是三角形的顶点，也就是离X轴最近的点
+                    bisectorPoint = new Point(start.X + dx, start.Y + dy);
+                } else
+                {
+                    bisectorPoint = new Point(start.X - dx, start.Y - dy);
+                }
+               
+
+
+
+                //// 定义两个向量a和b，分别是五边形第一条边和第二条边
+                //double ax = end1.X - start.X;
+                //double ay = end1.Y - start.Y;
+                //double bx = end2.X - end1.X;
+                //double by = end2.Y - end1.Y;
+
+                //// 计算两个向量的夹角（弧度制）
+                //double angle = Math.Acos((ax * bx + ay * by) / (Math.Sqrt(ax * ax + ay * ay) * Math.Sqrt(bx * bx + by * by)));
+
+                //// 计算角平分线的方向（弧度制）
+                //double bisectorAngle = angle / 2;
+
+                //// 定义角平分线的长度（像素）
+                //int length = 100;
+
+                //// 计算角平分线的终点坐标
+                //int x2 = (int)(end1.X - length * Math.Cos(bisectorAngle));
+                //int y2 = (int)(end1.Y + length * Math.Sin(bisectorAngle));
+                //Point bisectorPoint = new Point(x2, y2);
+
+                //// 调用Graphics.DrawLine方法，画出角平分线
+                //g.DrawLine(pen, end1, bisectorPoint);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, bisectorPoint.X, bisectorPoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, bisectorPoint.X, bisectorPoint.Y + 10);
+                // 画出角平分线
+                g.DrawLine(pen, start, bisectorPoint);
+
+
+            }
+        }
+
+        // 在一个正方形ABCD或者矩形内任取一个点O  测试通过
+        public void DrawFreePoint(string A, string B, string C, string D, string O)
+        {
+            if(g != null)
+            {
+                // 拿来装A B C D点坐标
+                Point pointA = new Point();
+                Point pointB = new Point();
+                Point pointC = new Point();
+                Point pointD = new Point();
+                Point pointO = new Point();
+
+                pointA = nameToPoint[A];
+                pointB = nameToPoint[B];
+                pointC = nameToPoint[C];
+
+                Random rand = new Random();
+                pointO.X = rand.Next(pointA.X, pointB.X);
+                pointO.Y = rand.Next(pointA.Y, pointC.Y);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, pointO.X, pointO.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, pointO.X, pointO.Y + 10);
+
+
+            }
+        }
+        // 画一个不规则的四边形 比如凸四边形ABCD 测试通过
+        public void DrawTuSquare(string A, string B, string C, string D)
+        {
+            if (g != null)
+            {
+                // 构造四个点
+                Point A1 = new Point(150, 110);
+                Point A2 = new Point(450, 50);
+                Point A3 = new Point(150, 300);
+                Point A4 = new Point(450, 300);
+
+                // 加入词典 把左边
+                nameToPoint.Add(A, A1);
+                nameToPoint.Add(B, A2);
+                nameToPoint.Add(C, A3);
+                nameToPoint.Add(D, A4);
+
+                // 画点
+                FreePoint(A);
+                FreePoint(B);
+                FreePoint(C);
+                FreePoint(D);
+
+                // 连接点
+                DrawLineAB(A, B);
+                DrawLineAB(B, D);
+                DrawLineAB(D, C);
+                DrawLineAB(C, A);
+            }
+        }
+
+        //在已知的一个四边形中，在其中的AB一条边的外边画一个点C 测试通过
+        public void DrawPointOutSide(string A, string B, string C)
+        {
+            // 要画的这个点是距离这条边的中点位置50个单位远
+            if (g != null)
+            {
+
+                // 拿来装A B两点坐标
+                Point pointA = new Point();
+                Point pointB = new Point();
+                // C是用来存放中点
+                Point pointC = new Point();
+
+                pointA = nameToPoint[A];
+                pointB = nameToPoint[B];
+                pointC.X = (pointA.X + pointB.X) / 2 + 50;
+                pointC.Y = (pointA.Y + pointB.Y) / 2;
+                // 要显示在画布上的中点 都要加入坐标字典中
+                nameToPoint.Add(C, pointC);
+
+                // 拿到要画交点
+                string text = C;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black,pointC.X, pointC.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, pointC.X, pointC.Y + 10);
+
+            }
+        }
 
         // 显示三角形ABC的垂心 O   测试通过
         public void DrawVerticalCenter(string A, string B, string C, string O)
@@ -504,6 +751,7 @@ namespace GDI
                 {
                     // 随机一个点
                     Random rand = new Random();
+                    // 给定区间的的任意点
                     Point randPoint = new Point(rand.Next(Test.test.pictureBox1.Width), rand.Next(Test.test.pictureBox1.Height));
                     // 把该点 加入词典 注意每次得到一个新点 要记住加到词典里
                     nameToPoint.Add(text, randPoint);
@@ -780,6 +1028,13 @@ namespace GDI
 
             }
         }
+
+
+
+
+
+
+
 
 
 
