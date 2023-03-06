@@ -185,7 +185,7 @@ namespace GDI
 
                  
                 //从这个包含图元的所有组合图形的队列 选取最长的的组合图形 i是传入的图元数组最后一个下标
-                 alternativeGraph = getLongGraph(gdiQueue, gdiGraph, i);
+                alternativeGraph = getLongGraph(gdiQueue, gdiGraph, i);
 
                 if (alternativeGraph==null)// Todo 画单个图像
                 {

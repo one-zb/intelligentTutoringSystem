@@ -81,7 +81,124 @@ namespace GDI
         /// <summary>
         /// 数学 初中平面几何
         /// </summary>
-        /// 
+        
+
+
+
+        // 画已知线段AB的延长线 A0 往AB方向正方形延长到0 延长100 测试通过
+        public void DrawExtendLine(string A, string B, string O)
+        {
+            if(g != null)
+            {
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+                // 拿到已知线段 两点
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+
+                int x1 = pointA.X;
+                int y1 = pointA.Y;
+                int x2 = pointB.X;
+                int y2 = pointB.Y;
+                
+
+                //计算原线段的长度（以公里为单位）和角度（以弧度为单位）
+                double distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                double angle = Math.Atan2(y2 - y1, x2 - x1);
+
+                //沿着原线段AB正方向延长 延长长度为100
+                int x3 =(int)(x2 + 100 * Math.Cos(angle));
+                int y3 =(int)(y2 + 100 * Math.Sin(angle));
+
+                //沿着原线段相反方向延长
+                //x3 = x1 - length * Math.Cos(angle);
+                //y3 = y1 - length * Math.Sin(angle);
+
+
+                // 创建一个PointF对象，表示延长线的终点
+                Point p3 = new Point(x3, y3);
+                // 把新生成的点加入点集合中
+                nameToPoint.Add(O, p3);
+                g.DrawLine(pen, pointA, p3);
+
+
+                // 拿到要画的点
+                string textE = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示黑点和字母E
+                g.FillEllipse(Brushes.Black, p3.X, p3.Y, 4, 4);
+                g.DrawString(textE, textFont, textBrush, p3.X, p3.Y + 10);
+            }
+        }
+
+
+
+        // 在已知三角形ABC中，以AB为边画一个正方形 E F顺序是在图中从左到右的 TODO
+        public void DrawSquareWithline(string A, string B, string C, string E, string F)
+        {
+            if(g != null)
+            {
+
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+
+                int x1 = pointA.X;
+                int x2 = pointB.X;
+
+                int y1 = pointA.Y;
+                int y2 = pointB.Y;
+
+
+
+
+                // 计算边长
+                double side = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+
+                // 计算中点
+                double midX = (x1 + x2) / 2;
+                double midY = (y1 + y2) / 2;
+
+                // 画出圆
+                g.DrawEllipse(pen, (float)(midX - side / 2), (float)(midY - side / 2), (float)side, (float)side);
+
+                // 计算切点
+                double angle = Math.Atan((y2 - y1) / (x2 - x1));
+                double offsetX = side / 2 * Math.Sin(angle);
+                double offsetY = side / 2 * Math.Cos(angle);
+
+                // 画出正方形的另外三条边
+                Point pointE = new Point((int)(midX - offsetX), (int)(midY + offsetY));
+                Point pointF = new Point((int)(midX + offsetX), (int)(midY - offsetY));
+
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(E, pointE);
+                nameToPoint.Add(F, pointF);
+
+                g.DrawLine(pen, pointE, pointF);
+                g.DrawLine(pen, pointF, pointA);
+                g.DrawLine(pen, pointE, pointB);
+                
+
+                // 拿到要画的点
+                string textE = E;
+                string textF = F;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示黑点和字母E
+                g.FillEllipse(Brushes.Black, pointE.X, pointE.Y, 4, 4);
+                g.DrawString(textE, textFont, textBrush, pointE.X, pointE.Y + 10);
+
+                // 显示字母
+                g.FillEllipse(Brushes.Black, pointF.X, pointF.Y, 4, 4);
+                g.DrawString(textF, textFont, textBrush, pointF.X, pointF.Y + 10);
+            }
+        }
 
 
         // 在已知三角形ABC中任取一点 0 测试通过
@@ -119,6 +236,8 @@ namespace GDI
                 //随机点
                 Vector3 p = x * e1 + y * e2 + AA;
                 Point freePoint = new Point((int)p.X,(int)p.Y);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, freePoint);
 
                 // 拿到要画的点
                 string text = O;
@@ -148,6 +267,10 @@ namespace GDI
                 Point freePoint = new Point();
                 freePoint.X = (int)(start.X + (int)(end.X - start.X) * r);
                 freePoint.Y = (int)(start.Y + (int)(end.Y - start.Y) * r);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, freePoint);
+
+
 
                 // 拿到要画的点
                 string text = O;
@@ -183,36 +306,16 @@ namespace GDI
                 {
                     // 如果这个起始点是三角形的顶点，也就是离X轴最近的点
                     bisectorPoint = new Point(start.X + dx, start.Y + dy);
+                    // 生成新点之后要加入点集合中
+                    nameToPoint.Add(O, bisectorPoint);
                 } else
                 {
                     bisectorPoint = new Point(start.X - dx, start.Y - dy);
+                    // 生成新点之后要加入点集合中
+                    nameToPoint.Add(O, bisectorPoint);
                 }
                
 
-
-
-                //// 定义两个向量a和b，分别是五边形第一条边和第二条边
-                //double ax = end1.X - start.X;
-                //double ay = end1.Y - start.Y;
-                //double bx = end2.X - end1.X;
-                //double by = end2.Y - end1.Y;
-
-                //// 计算两个向量的夹角（弧度制）
-                //double angle = Math.Acos((ax * bx + ay * by) / (Math.Sqrt(ax * ax + ay * ay) * Math.Sqrt(bx * bx + by * by)));
-
-                //// 计算角平分线的方向（弧度制）
-                //double bisectorAngle = angle / 2;
-
-                //// 定义角平分线的长度（像素）
-                //int length = 100;
-
-                //// 计算角平分线的终点坐标
-                //int x2 = (int)(end1.X - length * Math.Cos(bisectorAngle));
-                //int y2 = (int)(end1.Y + length * Math.Sin(bisectorAngle));
-                //Point bisectorPoint = new Point(x2, y2);
-
-                //// 调用Graphics.DrawLine方法，画出角平分线
-                //g.DrawLine(pen, end1, bisectorPoint);
 
                 // 拿到要画的点
                 string text = O;
@@ -247,6 +350,8 @@ namespace GDI
                 Random rand = new Random();
                 pointO.X = rand.Next(pointA.X, pointB.X);
                 pointO.Y = rand.Next(pointA.Y, pointC.Y);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, pointO);
 
                 // 拿到要画的点
                 string text = O;

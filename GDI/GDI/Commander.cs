@@ -94,6 +94,36 @@ namespace GDI
 
 
 
+        // 延长AB到0点 测试通过
+        [CMD("extendline")]
+        static public void DrawExtendLine(string A, string B, string O, int flag)
+        {
+
+            myGDI.DrawExtendLine(A, B, O);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
+
+
+        // 在已知三角形ABC中，以AB为边画一个正方形 E F顺序是在图中从左到右的 TODO
+        [CMD("squarewithtrangle")]
+        static public void DrawSquareWithline(string A, string B, string C, string E, string F, int flag)
+        {
+
+            myGDI.DrawSquareWithline(A, B, C, E, F);
+            if (flag == 1)
+            {
+
+                bmp.Save(imagePath);
+            }
+        }
+
+
 
         // 在已知三角形ABC中任取一点O 测试通过
         [CMD("tranglefreepoint")]
