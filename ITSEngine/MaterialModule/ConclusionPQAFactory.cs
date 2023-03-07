@@ -42,11 +42,13 @@ namespace ITS.MaterialModule
             if (topicModule.NeedDraw())
             {
                 // 如果当前节点需要画图,再进行画图操作
-                // 初始化画图命令
-                CMDMatch match = new CMDMatch();
-               
-          
-                match.GraphMethod(topicModule, net);
+                // 初始化画图命令 这里主要是命令画图 目前数学和化学 部分支持
+                //CMDMatch match = new CMDMatch();
+                //match.GraphMethod(topicModule, net);
+
+                // 测试物理画图
+                CircuitGerneration circuitGeneration = new CircuitGerneration();
+                circuitGeneration.circuitDraw(topicModule, net);
                 string[] imagePath = GDI.Commander.GetImagePath();
                 
                 AddQAs(ref pqa, new[] { 0.5, 0.1, 0.1 }, imagePath, "请按顺序填写下面的空缺：\n" + content + "。",

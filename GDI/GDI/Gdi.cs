@@ -1711,42 +1711,96 @@ namespace GDI
 
 
     //物理电学部分
-    public class Ammeter : PhysicalElectricityGdi 
+    public class Ammeter : PhysicalElectricityGdi
     {
         private float width;
         private float height;
-        public Ammeter(Graphics g,float x1,float y1, float size, float angle = 0)
-        {
-            width=2 * size;
-            height=2 * size;
-            this.x = x1 + width / 2;
-            this.y = y1 + height / 2;
-            RectangleF rec = new RectangleF(x1 - size, y1 - size,width,height);
-            graphics = g;
-            Rotate(angle);
-            connectPoints.Add(calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
-            connectPoints.Add(calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
-            graphics.DrawString("A", new Font("小宋体", 2 * size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, rec);
-            graphics.DrawEllipse(pen, rec);
-        }
-    }
-    public class Voltmeter : PhysicalElectricityGdi 
-    {
-        private float width;
-        private float height;
-        public Voltmeter(Graphics g,float x1, float y1,float size, float angle = 0)
+
+        // 这里传进来的x1, y1是指元件中心位置的坐标
+        public Ammeter(Graphics g, float x1, float y1, float size = 10, float angle = 0)
         {
             width = 2 * size;
             height = 2 * size;
-            this.x = x1 + width / 2;
-            this.y = y1 + height / 2;
-            RectangleF rec = new RectangleF(x1 - size, y1 - size, width,height);
+            // x y 是基类中的centerPoint点的x y 表示中心点
+            this.x = x1;
+            this.y = y1;
+
+            // 计算元件中心点的坐标
+            float centerX = x1;
+            float centerY = y1;
+
+            //RectangleF rec = new RectangleF(x1 - size, y1 - size,width,height);
+            RectangleF rec = new RectangleF(centerX - width / 2, centerY - height / 2, width, height);
             graphics = g;
             Rotate(angle);
-            connectPoints.Add(calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
+            System.Diagnostics.Debug.WriteLine("centerPoint：" + centerPoint);
+            // 计算左右连接点的坐标 size的大小是连接元件往外延伸的线段长度
+            PointF leftPoint = new PointF(centerX - width / 2 - size, centerY);
+            PointF rightPoint = new PointF(centerX + width / 2 + size, centerY);
+
+            leftPoint = calcNewPoint(leftPoint, new PointF(centerX, centerY), angle);
+            rightPoint = calcNewPoint(rightPoint, new PointF(centerX, centerY), angle);
+
+            //// 测试下 看下连接点位置
+            //graphics.FillEllipse(Brushes.Black, leftPoint.X, leftPoint.Y, 1, 1);
+            //graphics.FillEllipse(Brushes.Black, rightPoint.X, rightPoint.Y, 1, 1);
+
+            //// 将连接点添加到列表中
+            //connectPoints.Add(leftPoint);
+            //connectPoints.Add(rightPoint);
+
+            connectPoints.Add(leftPoint);
+            connectPoints.Add(rightPoint);
+
+
+            // 测试下 旋转后看下连接点位置
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+
+            graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
+            graphics.DrawString("A", new Font("小宋体", 2 * size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, rec);
+            graphics.DrawLine(pen, rightPoint.X - size, rightPoint.Y, rightPoint.X, rightPoint.Y);
+            graphics.DrawEllipse(pen, rec);
+        }
+    }
+    public class Voltmeter : PhysicalElectricityGdi
+    {
+        private float width;
+        private float height;
+        public Voltmeter(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        {
+            width = 2 * size;
+            height = 2 * size;
+            this.x = x1;
+            this.y = y1;
+
+            // 计算元件中心点的坐标
+            float centerX = x1;
+            float centerY = y1;
+            // 计算左右连接点的坐标
+            PointF leftPoint = new PointF(centerX - width / 2 - size, centerY);
+            PointF rightPoint = new PointF(centerX + width / 2 + size, centerY);
+            RectangleF rec = new RectangleF(centerX - width / 2, y1 - height / 2, width, height);
+            graphics = g;
+            Rotate(angle);
+            // 如果传进来角度不为0，那么就计算旋转之后的左右连接点坐标，如果为0，也就是不传入角度，那么就是原坐标
+            leftPoint = calcNewPoint(leftPoint, new PointF(centerX, centerY), angle);
+            rightPoint = calcNewPoint(rightPoint, new PointF(centerX, centerY), angle);
+
+            connectPoints.Add(leftPoint);
+            connectPoints.Add(rightPoint);
+            //connectPoints.Add(calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
+            //connectPoints.Add( calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
+
+
+            // 测试下 旋转后看下连接点位置
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+
+            graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
             graphics.DrawString("V", new Font("小宋体", 2 * size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, rec);
             graphics.DrawEllipse(pen, rec);
+            graphics.DrawLine(pen, rightPoint.X - size, rightPoint.Y, rightPoint.X, rightPoint.Y);
         }
     }
     public class Motor : PhysicalElectricityGdi
@@ -1768,35 +1822,49 @@ namespace GDI
             graphics.DrawEllipse(pen, rec);
         }
     }
-    public class Resistance : PhysicalElectricityGdi 
+    public class Resistance : PhysicalElectricityGdi
     {
         private float width;
         private float height;
         private float lineWidth;
-        public Resistance(Graphics g,float x1,float y1,float size, float angle = 0)
-        { 
-            width = size * 3;
+        public Resistance(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        {
+            // 这里要统一元件的宽度是2倍的size
+            width = size * 2;
             height = size;
             lineWidth = width / 3;
             this.x = x1;
             this.y = y1;
+
+            // 计算元件中心点的坐标
+            float centerX = x1;
+            float centerY = y1;
+            // 计算左右连接点的坐标
+            PointF leftPoint = new PointF(centerX - width / 2 - size, centerY);
+            PointF rightPoint = new PointF(centerX + width / 2 + size, centerY);
             graphics = g;
             Rotate(angle);
-            connectPoints.Add( calcNewPoint(new PointF(x1 - width / 2 - lineWidth, y1), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(x1 + width / 2 + lineWidth, y1), this.centerPoint, angle));
-            graphics.DrawLine(pen, x1 - width / 2 - lineWidth, y1, x1 - width / 2, y1);
-            graphics.DrawRectangle(pen, x1 - width / 2, y1 - height / 2, width, height);
-            graphics.DrawLine(pen, x1 + width / 2, y1, x1 + width / 2 + lineWidth, y1);
+            connectPoints.Add(calcNewPoint(leftPoint, this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(rightPoint, this.centerPoint, angle));
+
+            // 测试下 旋转后看下连接点位置
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            // 注意电阻两边的连接线长度是一个连接点向外延伸一个size长度
+            graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
+            graphics.DrawRectangle(pen, centerX - width / 2, y1 - height / 2, width, height);
+            graphics.DrawLine(pen, rightPoint.X - size, rightPoint.Y, rightPoint.X, rightPoint.Y);
+
 
         }
     }
-    public class SlidingRheostat : PhysicalElectricityGdi 
+    public class SlidingRheostat : PhysicalElectricityGdi
     {
         private float width;
         private float height;
-        public SlidingRheostat(Graphics g,float x1,float y1,float size, float angle = 0,float scale = 0.3f, bool isLeft = false)
+        public SlidingRheostat(Graphics g, float x1, float y1, float size = 10, float angle = 0, float scale = 0.3f, bool isLeft = false)
         {
-            width = size * 3;
+            width = size * 2;
             height = size;
             this.x = x1;
             this.y = y1;
@@ -1808,13 +1876,18 @@ namespace GDI
                 throw new Exception("输入scale只能在0到1之间");
             graphics = g;
             Rotate(angle);
-            connectPoints.Add( calcNewPoint(new PointF(x1 - lineWidth - width / 2, y1), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(pointX + (isLeft == false ? (1 - scale) * width : -scale * width), pointY), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(x1 - lineWidth - width / 2, y1), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(pointX + width + (isLeft == false ? (1 - scale) * width : -scale * width), pointY), this.centerPoint, angle));
             connectPoints.Add(calcNewPoint(new PointF(x1 + lineWidth + width / 2, y1), this.centerPoint, angle));
+            // 测试下 旋转后看下连接点位置 主要是用前面两个点
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[2].X, connectPoints[2].Y, 4, 4);
+
             graphics.DrawLine(pen, x1 - lineWidth - width / 2, y1, x1 - width / 2, y1);
             graphics.DrawRectangle(pen, x1 - width / 2, y1 - height / 2, width, height);
             Arrow(graphics, pointX, pointY, pointX, y1 - (height / 2));
-            graphics.DrawLine(pen, pointX, pointY, pointX + (isLeft == false ? (1 - scale) * width : -scale * width), pointY);
+            graphics.DrawLine(pen, pointX, pointY, pointX + width + (isLeft == false ? (1 - scale) * width : -scale * width), pointY);
         }
     }
     public class Bulb : PhysicalElectricityGdi 
@@ -1841,35 +1914,40 @@ namespace GDI
            l2=new Line(graphics, x1 + width / 2 - d, y1 - height / 2 + d, x1 - width / 2 + d, y1 + height / 2 - d);
         }
     }
-    public class Switch : PhysicalElectricityGdi 
+    public class Switch : PhysicalElectricityGdi
     {
         private float width;
         private float height;
-        public Switch(Graphics g,float x1,float y1,float size, float angle = 0,bool isClosed=false)
+        public Switch(Graphics g, float x1, float y1, float size = 10, float angle = 0, bool isClosed = false)
         {
             width = size;
             height = size;
-            this.x=x1;
-            this.y=y1;
+            this.x = x1;
+            this.y = y1;
             float lineWidth = size * 2;
-            SizeF size1 = new SizeF(size*3/5, size*3/5);
-            RectangleF rec1 = new RectangleF(new PointF(x1 - size / 2, y1 - size*3 / 10), size1);
-           
+            SizeF size1 = new SizeF(size * 3 / 5, size * 3 / 5);
+            RectangleF rec1 = new RectangleF(new PointF(x1 - size / 2, y1 - size * 3 / 10), size1);
+
             graphics = g;
             Rotate(angle);
-            connectPoints.Add( calcNewPoint(new PointF(x1 - lineWidth - size / 2, y1), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(x1 + lineWidth + size * 3, y1), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(x1 - lineWidth - size / 2, y1), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(x1 + lineWidth + size * 3, y1), this.centerPoint, angle));
+
+            // 测试下 旋转后看下连接点位置
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+
             graphics.DrawLine(pen, x1 - lineWidth - size / 2, y1, x1 - size / 2, y1);
             graphics.DrawEllipse(pen, rec1);
-            graphics.DrawLine(pen, x1,(isClosed==false?y1 - size*3 / 10:y1 + size*1/5), x1 + size * 3,(isClosed==false?y1 - size *1.5f:y1-size/5));
+            graphics.DrawLine(pen, x1, (isClosed == false ? y1 - size * 3 / 10 : y1 + size * 1 / 5), x1 + size * 3, (isClosed == false ? y1 - size * 1.5f : y1 - size / 5));
             graphics.DrawLine(pen, x1 + size * 3, y1, x1 + lineWidth + size * 3, y1);
         }
     }
-    public class Power : PhysicalElectricityGdi 
+    public class Power : PhysicalElectricityGdi
     {
         private float width;
         private float height;
-        public Power(Graphics g,float x1,float y1,float size, float angle = 0)
+        public Power(Graphics g, float x1, float y1, float size = 10, float angle = 0)
         {
             width = size;
             height = size;
@@ -1878,8 +1956,11 @@ namespace GDI
             float lineWidth = size * 2;
             graphics = g;
             Rotate(angle);
-            connectPoints.Add( calcNewPoint(new PointF(x1 - lineWidth - size / 2, y1), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(x1 + size / 2 + lineWidth, y1), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(x1 - lineWidth - size / 2, y1), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(new PointF(x1 + size / 2 + lineWidth, y1), this.centerPoint, angle));
+            // 测试下 旋转后看下连接点位置
+            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
             graphics.DrawLine(pen, x1 - lineWidth - size / 2, y1, x1 - size / 2, y1);
             graphics.DrawLine(pen, x1 - size / 2, y1 - size, x1 - size / 2, y1 + size);
             graphics.DrawLine(pen, x1 + size / 2, y1 - size / 2, x1 + size / 2, y1 + size / 2);
