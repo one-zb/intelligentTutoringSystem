@@ -16,7 +16,7 @@ namespace ITS
 {
     public class FileManager
     {
-        public static string DataPath = @"C:\Users\10114\Desktop\大论文\20221204老师项目\老师项目\测试知识库 - 副本\FVCData";
+        public static string DataPath = @"C:\Users\10114\Desktop\老师项目\测试知识库 - 副本\FVCData";
         public static string KnowledgePath = DataPath + @"\知识库";
         public static string LearningHistoryPath = DataPath+@"\学习历史";
 

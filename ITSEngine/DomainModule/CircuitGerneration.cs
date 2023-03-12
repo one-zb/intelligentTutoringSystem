@@ -88,7 +88,8 @@ namespace ITS.DomainModule
                                 string label = net.Net.Rational(nodeFrom, nodeTo).Label;
 
 
-                                // 先碰到电阻，不能画，因为下面数字要用来分行的，这里电阻是并联，所以不能确定是在哪一行
+                                
+                                // 这里表示第一个链接标签内容为空，表示这个支路是用来串联已经绘制好的元件，只要记录链接就行，就是在电路图右边的电路上下两行最右边的元件串联起来
                                 if (label.Equals("") && net.Net.Rational(nodeFrom, nodeTo).StartMulti.Equals("") && net.Net.Rational(nodeFrom, nodeTo).EndMulti.Equals(""))
                                 {
                                     // 碰到空标签，说明这里不用确定在哪一行位置
