@@ -391,7 +391,7 @@ namespace GDI
     public class Pyramid : BasicGraphics //棱锥
     {
         float width, height;
-        public Pyramid(Graphics g, float x1, float y1,int mode=0,  float w = 0, float h = 0,float size = 10, float angle = 0) 
+        public Pyramid(Graphics g, float x1, float y1,int mode=0,  float w = 0, float h = 0,float size = 30, float angle = 0) 
         {
             width = size * 7 + w;
             height = size * 7 + h;
@@ -555,6 +555,8 @@ namespace GDI
              }
          }
     }
+
+
     //物理力学
     public class Convexlens : PhysicalMechanics//凸透镜
     {
@@ -834,6 +836,8 @@ namespace GDI
             }
         }
     }
+
+
     //化学部分 单个图元
     public class IronSupport : ChemistryGdi //铁架台
     {
@@ -1741,21 +1745,14 @@ namespace GDI
             leftPoint = calcNewPoint(leftPoint, new PointF(centerX, centerY), angle);
             rightPoint = calcNewPoint(rightPoint, new PointF(centerX, centerY), angle);
 
-            //// 测试下 看下连接点位置
-            //graphics.FillEllipse(Brushes.Black, leftPoint.X, leftPoint.Y, 1, 1);
-            //graphics.FillEllipse(Brushes.Black, rightPoint.X, rightPoint.Y, 1, 1);
-
-            //// 将连接点添加到列表中
-            //connectPoints.Add(leftPoint);
-            //connectPoints.Add(rightPoint);
-
+         
             connectPoints.Add(leftPoint);
             connectPoints.Add(rightPoint);
 
 
             // 测试下 旋转后看下连接点位置
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
 
             graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
             graphics.DrawString("A", new Font("小宋体", 2 * size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, rec);
@@ -1789,13 +1786,12 @@ namespace GDI
 
             connectPoints.Add(leftPoint);
             connectPoints.Add(rightPoint);
-            //connectPoints.Add(calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
-            //connectPoints.Add( calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
+           
 
 
             // 测试下 旋转后看下连接点位置
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
 
             graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
             graphics.DrawString("V", new Font("小宋体", 2 * size, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, rec);
@@ -1848,8 +1844,8 @@ namespace GDI
             connectPoints.Add(calcNewPoint(rightPoint, this.centerPoint, angle));
 
             // 测试下 旋转后看下连接点位置
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
             // 注意电阻两边的连接线长度是一个连接点向外延伸一个size长度
             graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
             graphics.DrawRectangle(pen, centerX - width / 2, y1 - height / 2, width, height);
@@ -1880,8 +1876,8 @@ namespace GDI
             connectPoints.Add(calcNewPoint(new PointF(pointX + width + (isLeft == false ? (1 - scale) * width : -scale * width), pointY), this.centerPoint, angle));
             connectPoints.Add(calcNewPoint(new PointF(x1 + lineWidth + width / 2, y1), this.centerPoint, angle));
             // 测试下 旋转后看下连接点位置 主要是用前面两个点
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
             //graphics.FillEllipse(Brushes.Black, connectPoints[2].X, connectPoints[2].Y, 4, 4);
 
             graphics.DrawLine(pen, x1 - lineWidth - width / 2, y1, x1 - width / 2, y1);
@@ -1896,22 +1892,36 @@ namespace GDI
         private Line l2;
         private float width;
         private float height;
-        public Bulb(Graphics g,float x1,float y1,float size, float angle = 0)
+        public Bulb(Graphics g,float x1,float y1,float size = 10, float angle = 0)
         {
             width = size * 2;
             height = size * 2;
             this.x = x1;
             this.y = y1;
+
+
+            // 计算元件中心点的坐标
+            float centerX = x1;
+            float centerY = y1;
+            // 计算左右连接点的坐标
+            PointF leftPoint = new PointF(centerX - width / 2 - size, centerY);
+            PointF rightPoint = new PointF(centerX + width / 2 + size, centerY);
+
             RectangleF rec = new RectangleF(x1 - width / 2, y1 - height / 2, width, height);
             double r = Math.Sqrt(width * width + height * height);
             int d = Convert.ToInt32((width / 2) * (1 - (width / r)));         
             graphics = g;
             Rotate(angle);
-            connectPoints.Add( calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
-            connectPoints.Add( calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(leftPoint, this.centerPoint, angle));
+            connectPoints.Add(calcNewPoint(rightPoint, this.centerPoint, angle));
+
+            //connectPoints.Add( calcNewPoint(new PointF(x, y + height / 2), this.centerPoint, angle));
+            //connectPoints.Add( calcNewPoint(new PointF(x + width, y + height / 2), this.centerPoint, angle));
+            graphics.DrawLine(pen, leftPoint.X, leftPoint.Y, leftPoint.X + size, leftPoint.Y);
             graphics.DrawEllipse(pen, rec);
            l1=new Line(graphics, x1 + d - width / 2, y1 - height / 2 + d, x1 + width / 2 - d, y1 + height / 2 - d);
            l2=new Line(graphics, x1 + width / 2 - d, y1 - height / 2 + d, x1 - width / 2 + d, y1 + height / 2 - d);
+           graphics.DrawLine(pen, rightPoint.X - size, rightPoint.Y, rightPoint.X, rightPoint.Y);
         }
     }
     public class Switch : PhysicalElectricityGdi
@@ -1934,8 +1944,8 @@ namespace GDI
             connectPoints.Add(calcNewPoint(new PointF(x1 + lineWidth + size * 3, y1), this.centerPoint, angle));
 
             // 测试下 旋转后看下连接点位置
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
 
             graphics.DrawLine(pen, x1 - lineWidth - size / 2, y1, x1 - size / 2, y1);
             graphics.DrawEllipse(pen, rec1);
@@ -1959,8 +1969,9 @@ namespace GDI
             connectPoints.Add(calcNewPoint(new PointF(x1 - lineWidth - size / 2, y1), this.centerPoint, angle));
             connectPoints.Add(calcNewPoint(new PointF(x1 + size / 2 + lineWidth, y1), this.centerPoint, angle));
             // 测试下 旋转后看下连接点位置
-            graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
-            graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4);
+            //graphics.FillEllipse(Brushes.Black, connectPoints[1].X, connectPoints[1].Y, 4, 4);
+
             graphics.DrawLine(pen, x1 - lineWidth - size / 2, y1, x1 - size / 2, y1);
             graphics.DrawLine(pen, x1 - size / 2, y1 - size, x1 - size / 2, y1 + size);
             graphics.DrawLine(pen, x1 + size / 2, y1 - size / 2, x1 + size / 2, y1 + size / 2);

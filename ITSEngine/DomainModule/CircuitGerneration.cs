@@ -46,6 +46,7 @@ namespace ITS.DomainModule
             nameTransformDic.Add("滑动变阻器", "SlidingRheostat");
             nameTransformDic.Add("开关", "Switch");
             nameTransformDic.Add("电源", "Power");
+            nameTransformDic.Add("灯泡", "Bulb");
         }
 
         
@@ -88,11 +89,11 @@ namespace ITS.DomainModule
                                 string label = net.Net.Rational(nodeFrom, nodeTo).Label;
 
 
-                                
+                                // 注意这里把这个定义给删了，不在语义网络中定义空标签连接，把并联元件不另外开一条支路，直接在原有的支路上标注并联
                                 // 这里表示第一个链接标签内容为空，表示这个支路是用来串联已经绘制好的元件，只要记录链接就行，就是在电路图右边的电路上下两行最右边的元件串联起来
                                 if (label.Equals("") && net.Net.Rational(nodeFrom, nodeTo).StartMulti.Equals("") && net.Net.Rational(nodeFrom, nodeTo).EndMulti.Equals(""))
                                 {
-                                    // 碰到空标签，说明这里不用确定在哪一行位置
+                                    // 这个肯定是已经绘制好的，所以直接跳过，看下一个元件
                                     continue;
                                 }
                                 else if (Regex.IsMatch(label, @"[\u4e00-\u9fbb]+"))
@@ -377,6 +378,8 @@ namespace ITS.DomainModule
                     return new Power(graphic, x, y);
                 else if (shapeType == "SlidingRheostat")
                     return new SlidingRheostat(graphic, x, y);
+                else if (shapeType == "Bulb")
+                    return new Bulb(graphic, x, y);
                 return null;
 
 

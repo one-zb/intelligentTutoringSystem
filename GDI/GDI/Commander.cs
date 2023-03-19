@@ -56,7 +56,7 @@ namespace GDI
 
 
         // 化学类 二氧化硫制备实验图 测试通过
-        [CMD("sulfur dioxide experiment")]
+        [CMD("so")]
         static public void DrawCreateSO2Experiment(int flag)
         {
 
@@ -91,6 +91,72 @@ namespace GDI
             }
 
         }
+
+
+        // 酒精灯
+        [CMD("alcoholamp")]
+        static public void DrawAlcoholLamp(int flag)
+        {
+
+
+            myGDI.DrawAlcoholLamp();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+
+        }
+
+        // 量筒
+        [CMD("volumetriccylinder")]
+        static public void DrawVolumetricCylinder(int flag)
+        {
+            myGDI.DrawVolumetricCylinder();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+        }
+
+        // 数学 立体几何 圆柱体
+        [CMD("cylinder")]
+        static public void DrawyClinder(int flag)
+        {
+
+
+            myGDI.DrawyClinder();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+
+        }
+
+        // 棱锥
+        [CMD("pyramid")]
+        static public void DrawPyramid(int flag)
+        {
+            myGDI.DrawPyramid();
+            if(flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+        }
+
+
+        // 物理 单个元器件
+        [CMD("verniercaliper")]
+        static public void DrawVernierCaliper(int flag)
+        {
+            myGDI.DrawVernierCaliper();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+        }
+
+
+
 
 
 

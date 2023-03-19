@@ -56,7 +56,7 @@ namespace GDI
             }
         }
 
-        // 化学 画铁架台加烧瓶
+        // 画铁架台加烧瓶
         public void DrawIronSupportFlask()
         {
             if(g != null)
@@ -65,12 +65,62 @@ namespace GDI
             }
         }
 
-        // 化学 
+        // 玻璃瓶
         public void DrawBottle()
         {
             if (g != null)
             {
                 Bottle bottle = new Bottle(g, 250, 250, 10);
+            }
+        }
+
+        // 酒精灯 AlcoholLamp
+        public void DrawAlcoholLamp()
+        {
+            if (g != null)
+            {
+                AlcoholLamp alcoholLamp = new AlcoholLamp(g, 250, 250, 10);
+            }
+        }
+
+        // 量筒
+        public void DrawVolumetricCylinder()
+        {
+            if (g != null)
+            {
+                VolumetricCylinder volumetricCylinder = new VolumetricCylinder(g, 250, 300, 20);
+            }
+        }
+
+
+
+
+        // 数学 立方体几何
+        // 圆柱体
+        public void DrawyClinder()
+        {
+            if (g != null)
+            {
+                Cylinder cylinder = new Cylinder(g, 200, 50);
+            }
+        }
+
+        // 棱锥
+        public void DrawPyramid()
+        {
+            if(g != null)
+            {
+                Pyramid pyramid = new Pyramid(g, 200, 50, 2);
+            }
+        }
+
+
+        // 物理
+        public void DrawVernierCaliper()
+        {
+            if (g != null)
+            {
+                VernierCaliper vernierCaliper = new VernierCaliper(g, 200, 50, 30);
             }
         }
 
@@ -81,7 +131,7 @@ namespace GDI
         /// <summary>
         /// 数学 初中平面几何
         /// </summary>
-        
+
 
 
 
