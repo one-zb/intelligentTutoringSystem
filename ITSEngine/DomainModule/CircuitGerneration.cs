@@ -113,8 +113,9 @@ namespace ITS.DomainModule
 
                                     // 如果该连接上写到是中文 比如并联 那第一个节点肯定是之前已经画过的，所以这里我们直接跳过
                                     // 但是要绘制并联的元件 这里我们约定画在元件上方  因为我们是首先绘制串联电路 
-                                    PointF position = new PointF(circuitDiagram[nameTransformDic[nodeFrom.Name]].X, circuitDiagram[nameTransformDic[nodeFrom.Name]].Y - 50);
-                                    string currentShapeEnglishName = nameTransformDic[nodeTo.Name];
+                                    PointF position = new PointF(circuitDiagram[nodeFrom.Name].X, circuitDiagram[nodeFrom.Name].Y - 50);
+                                    //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
+                                    string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                     PhysicalElectricityGdi currentComponent = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y); // 绘制并联元件
                                     circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
                                     string leftConnectedPointIndex = net.Net.Rational(nodeFrom, nodeTo).StartMulti;
@@ -171,8 +172,9 @@ namespace ITS.DomainModule
 
                                         // 表示是在第一层的元件，从上往下,初始化坐标
                                         PointF position = position1;
-                                        string currentShapeEnglishName = nameTransformDic[nodeTo.Name]; // 加时间戳标识当前添加的元件唯一
-                                        circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
+                                        //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
+                                        string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
+                                        circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
                                         if (!nameToComponent.ContainsKey(currentShapeEnglishName))
                                         {
                                             // 如果该元件没有绘制，就绘制
@@ -190,8 +192,9 @@ namespace ITS.DomainModule
                                     {
                                         // 第二行元件起始坐标
                                         PointF position = position2;
-                                        string currentShapeEnglishName = nameTransformDic[nodeTo.Name];
-                                        circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
+                                        //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
+                                        string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
+                                        circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
                                         if (!nameToComponent.ContainsKey(currentShapeEnglishName))
                                         {
                                             // 如果该元件没有绘制，就绘制
@@ -209,8 +212,9 @@ namespace ITS.DomainModule
                                     {
                                         // 第三行元件起始坐标
                                         PointF position = position3;
-                                        string currentShapeEnglishName = nameTransformDic[nodeTo.Name];
-                                        circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
+                                        //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
+                                        string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
+                                        circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
                                         if (!nameToComponent.ContainsKey(currentShapeEnglishName))
                                         {
                                             // 如果该元件没有绘制，就绘制
@@ -232,15 +236,16 @@ namespace ITS.DomainModule
                                 {
                                     // 当currentLayer 来到第二层 先计算这个元件中心坐标
                                     // 先拿到前一个元件中心点坐标 这个400是前一个元件中心点坐标往右移400的距离
-                                    PointF position = new PointF(circuitDiagram[nameTransformDic[nodeFrom.Name]].X + 100, circuitDiagram[nameTransformDic[nodeFrom.Name]].Y);
+                                    PointF position = new PointF(circuitDiagram[nodeFrom.Name].X + 100, circuitDiagram[nodeFrom.Name].Y);
                                     // 绘制当前图形
-                                    string currentShapeEnglishName = nameTransformDic[nodeTo.Name];
+                                    //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
+                                    string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                     if (!nameToComponent.ContainsKey(nodeTo.Name))
                                     {
                                         // 如果该元件没有绘制，就绘制
                                         PhysicalElectricityGdi component = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y);
                                         nameToComponent.Add(nodeTo.Name, component);
-                                        circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
+                                        circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
                                     }
                                     // 记录链接点
                                     // startRole 是拿到两个节点之间的链接上的前一个节点的补充 StartRole表示当前元件左连接点  EndRole表示右

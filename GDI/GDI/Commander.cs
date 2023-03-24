@@ -279,7 +279,7 @@ namespace GDI
         }
 
         // 化学类 二氧化硫制备实验图 测试通过
-        [CMD("so")]
+        [CMD("so", "二氧化硫制备")]
         static public void DrawCreateSO2Experiment(int flag)
         {
 

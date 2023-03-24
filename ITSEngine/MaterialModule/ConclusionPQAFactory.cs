@@ -41,14 +41,27 @@ namespace ITS.MaterialModule
             // 判断一下当前结论节点相连的有没有DRAW连接的节点，如果有这个链接，表示要画图
             if (topicModule.NeedDraw())
             {
-                // 如果当前节点需要画图,再进行画图操作
-                // 初始化画图命令 这里主要是命令画图 目前数学和化学 部分支持
-                CMDMatch match = new CMDMatch();
-                match.GraphMethod(topicModule, net);
+               
 
-                //// 测试物理画图
-                //CircuitGerneration circuitGeneration = new CircuitGerneration();
-                //circuitGeneration.circuitDraw(topicModule, net);
+                // 拿到 图 这个节点
+                SNNode graphNode = topicModule.GetGraphNode();
+                // 拿到当前结论语义网
+                ConclusionKRModuleSNet currentSNet = new ConclusionKRModuleSNet(net.Net);
+                SNNode imageNode = currentSNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA");
+
+                if (imageNode.Name.Equals("物理图"))
+                {
+                    // 测试物理画图
+                    CircuitGerneration circuitGeneration = new CircuitGerneration();
+                    circuitGeneration.circuitDraw(topicModule, net);
+                } else
+                {
+                    // 如果当前节点需要画图,再进行画图操作 
+                    // 初始化画图命令 这里主要是命令画图 目前数学和化学 部分支持
+                    CMDMatch match = new CMDMatch();
+                    match.GraphMethod(topicModule, net);
+                }
+
 
                 string[] imagePath = GDI.Commander.GetImagePath();
                 
