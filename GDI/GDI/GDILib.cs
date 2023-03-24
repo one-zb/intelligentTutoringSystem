@@ -42,7 +42,175 @@ namespace GDI
         /// 化学实验
         /// </summary>
 
-        // 化学
+        // 化学仪器
+
+
+        // 铁架台
+        public void DrawIronSupport()
+        {
+            if (g != null)
+            {
+                IronSupport ironSupport = new IronSupport(g, 250, 250, 10);
+            }
+        }
+
+        // 烧杯
+        public void DrawBeaker()
+        {
+            if (g != null)
+            {
+                Beaker beaker = new Beaker(g, 250, 250, 10);
+            }
+        }
+
+        // 广口瓶
+        public void DrawBottle()
+        {
+            if (g != null)
+            {
+                Bottle bottle = new Bottle(g, 250, 250, 10);
+            }
+        }
+
+        // 烧瓶
+        public void DrawFlask()
+        {
+            if (g != null)
+            {
+                Flask flask = new Flask(g, 250, 250, 10);
+            }
+        }
+
+        // 试管
+        public void DrawTestTube()
+        {
+            if (g != null)
+            {
+                TestTube testTube = new TestTube(g, 250, 250, 10);
+            }
+        }
+
+
+        // 酒精灯 AlcoholLamp
+        public void DrawAlcoholLamp()
+        {
+            if (g != null)
+            {
+                AlcoholLamp alcoholLamp = new AlcoholLamp(g, 250, 250, 10);
+            }
+        }
+
+        // 漏斗
+        public void DrawFunnel()
+        {
+            if (g != null)
+            {
+                Funnel funnel = new Funnel(g, 250, 250, 10);
+            }
+        }
+
+        // U型管
+        public void DrawUTube()
+        {
+            if (g != null)
+            {
+                U_Tube u_Tube = new U_Tube(g, 250, 250, 10);
+            }
+        }
+
+        // 水槽
+        public void DrawSink()
+        {
+            if (g != null)
+            {
+                Sink sink = new Sink(g, 250, 250, 10);
+            }
+        }
+
+        // 表面皿
+        public void DrawWatchGlass()
+        {
+            if (g != null)
+            {
+                WatchGlass watchGlass = new WatchGlass(g, 250, 250, 10);
+            }
+        }
+
+
+        // 量筒
+        public void DrawVolumetricCylinder()
+        {
+            if (g != null)
+            {
+                VolumetricCylinder volumetricCylinder = new VolumetricCylinder(g, 250, 300, 20);
+            }
+        }
+
+        // 玻璃棒
+        public void DrawGlassRod()
+        {
+            if (g != null)
+            {
+                GlassRod glassRod = new GlassRod(g, 250, 300, 20);
+            }
+        }
+
+        // 细口瓶
+        public void DrawNarrowNeckedBottle()
+        {
+            if (g != null)
+            {
+                NarrowNeckedBottle narrowNeckedBottle = new NarrowNeckedBottle(g, 250, 300, 20);
+            }
+        }
+
+        // 燃烧匙
+        public void DrawCombustionSpoon()
+        {
+            if (g != null)
+            {
+                CombustionSpoon combustionSpoon = new CombustionSpoon(g, 250, 300, 20);
+            }
+        }
+
+        // 胶头滴管
+        public void DrawDropper()
+        {
+            if (g != null)
+            {
+                Dropper dropper = new Dropper(g, 250, 300, 20);
+            }
+        }
+
+        // 三口烧瓶
+        public void DrawThreeNeckedFlask()
+        {
+            if (g != null)
+            {
+                ThreeNeckedFlask threeNeckedFlask = new ThreeNeckedFlask(g, 250, 300, 20);
+            }
+        }
+
+        // 玻璃管
+        public void DrawGlassTube()
+        {
+            if (g != null)
+            {
+                GlassTube glassTube = new GlassTube(g, 250, 300, 20);
+            }
+        }
+
+        // 石棉网
+        public void DrawAsbestosNet()
+        {
+            if (g != null)
+            {
+                AsbestosNet asbestosNet = new AsbestosNet(g, 250, 300, 20);
+            }
+        }
+
+
+
         // 二氧化硫制备实验图 测试通过
         public void DrawSO2()
         {
@@ -65,32 +233,10 @@ namespace GDI
             }
         }
 
-        // 玻璃瓶
-        public void DrawBottle()
-        {
-            if (g != null)
-            {
-                Bottle bottle = new Bottle(g, 250, 250, 10);
-            }
-        }
+       
 
-        // 酒精灯 AlcoholLamp
-        public void DrawAlcoholLamp()
-        {
-            if (g != null)
-            {
-                AlcoholLamp alcoholLamp = new AlcoholLamp(g, 250, 250, 10);
-            }
-        }
 
-        // 量筒
-        public void DrawVolumetricCylinder()
-        {
-            if (g != null)
-            {
-                VolumetricCylinder volumetricCylinder = new VolumetricCylinder(g, 250, 300, 20);
-            }
-        }
+        
 
 
 
@@ -115,7 +261,266 @@ namespace GDI
         }
 
 
-        // 物理
+       // 物理电学
+
+        // 电流表
+        public void DrawAmmeter()
+        {
+            if (g != null)
+            {
+                Ammeter ammeter = new Ammeter(g, 200, 50, 30);
+            }
+        }
+
+        // 电压表
+        public void DrawVoltmeter()
+        {
+            if (g != null)
+            {
+                Voltmeter voltmeter = new Voltmeter(g, 200, 50, 30);
+            }
+        }
+
+        // 电动机
+        public void DrawMotor()
+        {
+            if (g != null)
+            {
+                Motor motor = new Motor(g, 200, 50, 30);
+            }
+        }
+
+        // 电阻
+        public void DrawResistance()
+        {
+            if (g != null)
+            {
+                Resistance resistance = new Resistance(g, 200, 50, 30);
+            }
+        }
+
+        // 滑动变阻器
+        public void DrawSlidingRheostat()
+        {
+            if (g != null)
+            {
+                SlidingRheostat slidingRheostat = new SlidingRheostat(g, 200, 50, 30);
+            }
+        }
+
+        // 灯泡
+        public void DrawBulb()
+        {
+            if (g != null)
+            {
+                Bulb bulb = new Bulb(g, 200, 50, 30);
+            }
+        }
+
+
+        // 开关
+        public void DrawSwitch()
+        {
+            if (g != null)
+            {
+                Switch switchs = new Switch(g, 200, 50, 30);
+            }
+        }
+
+        // 电源
+        public void DrawPower()
+        {
+            if (g != null)
+            {
+                Power power = new Power(g, 200, 50, 30);
+            }
+        }
+
+        // 电容
+        public void DrawCapacitor()
+        {
+            if (g != null)
+            {
+                Capacitor capacitor = new Capacitor(g, 200, 50, 30);
+            }
+        }
+
+        // 铃铛
+        public void DrawBell()
+        {
+            if (g != null)
+            {
+                Bell bell = new Bell(g, 200, 50, 30);
+            }
+        }
+
+        // 铃铛
+        public void DrawDiode()
+        {
+            if (g != null)
+            {
+                Diode diode = new Diode(g, 200, 50, 30);
+            }
+        }
+
+        // 三极管
+        public void DrawTriode()
+        {
+            if (g != null)
+            {
+                Triode triode = new Triode(g, 200, 50, 30);
+            }
+        }
+
+        // 接地极
+        public void DrawGround()
+        {
+            if (g != null)
+            {
+                Ground ground = new Ground(g, 200, 50, 30);
+            }
+        }
+
+        // 扬声器
+        public void DrawSpeaker()
+        {
+            if (g != null)
+            {
+                Speaker speaker = new Speaker(g, 200, 50, 30);
+            }
+        }
+
+        // 倒相放大器 非门
+        public void DrawNotGate()
+        {
+            if (g != null)
+            {
+                NotGate notGate = new NotGate(g, 200, 50, 30);
+            }
+        }
+
+        // 与门
+        public void DrawAndGate()
+        {
+            if (g != null)
+            {
+                AndGate notGate = new AndGate(g, 200, 50, 30);
+            }
+        }
+
+        // 或门
+        public void DrawOrGate()
+        {
+            if (g != null)
+            {
+                OrGate orGate = new OrGate(g, 200, 50, 30);
+            }
+        }
+
+
+        // 与非门
+        public void DrawNAndGate()
+        {
+            if (g != null)
+            {
+                NAndGate nAndGate = new NAndGate(g, 200, 50, 30);
+            }
+        }
+
+        // 或非门
+        public void DrawNOrGate()
+        {
+            if (g != null)
+            {
+                NOrGate nOrGate = new NOrGate(g, 200, 50, 30);
+            }
+        }
+
+        // 异或门
+        public void DrawXOrGate()
+        {
+            if (g != null)
+            {
+                XOrGate xOrGate = new XOrGate(g, 200, 50, 30);
+            }
+        }
+
+        // 运算放大器
+        public void DrawOperationalAmplifier()
+        {
+            if (g != null)
+            {
+                OperationalAmplifier operationalAmplifier = new OperationalAmplifier(g, 200, 50, 30);
+            }
+        }
+
+        // 信号源
+        public void DrawSignalSource()
+        {
+            if (g != null)
+            {
+                SignalSource signalSource = new SignalSource(g, 200, 50, 30);
+            }
+        }
+
+        // 石英晶体振荡器
+        public void DrawCrystalOscillator()
+        {
+            if (g != null)
+            {
+                CrystalOscillator crystalOscillator = new CrystalOscillator(g, 200, 50, 30);
+            }
+        }
+
+        // 保险丝
+        public void DrawFuse()
+        {
+            if (g != null)
+            {
+                Fuse Fuse = new Fuse(g, 200, 50, 30);
+            }
+        }
+
+        // 报警器
+        public void DrawAlarmSystem()
+        {
+            if (g != null)
+            {
+                AlarmSystem alarmSystem = new AlarmSystem(g, 200, 50, 30);
+            }
+        }
+
+        // 电感器
+        public void DrawInductor()
+        {
+            if (g != null)
+            {
+                Inductor inductor = new Inductor(g, 200, 50, 30);
+            }
+        }
+
+
+        // 电阻箱
+        public void DrawResistanceBox()
+        {
+            if (g != null)
+            {
+                ResistanceBox resistanceBox = new ResistanceBox(g, 200, 50, 30);
+            }
+        }
+
+        // 电阻箱
+        public void DrawResistanceWire()
+        {
+            if (g != null)
+            {
+                ResistanceWire resistanceWire = new ResistanceWire(g, 200, 50, 30);
+            }
+        }
+
+        // 物理力学部分
+
+        // 游标卡尺
         public void DrawVernierCaliper()
         {
             if (g != null)
@@ -123,6 +528,83 @@ namespace GDI
                 VernierCaliper vernierCaliper = new VernierCaliper(g, 200, 50, 30);
             }
         }
+
+        // 弹簧测力仪
+        public void DrawSpringDynamometer()
+        {
+            if (g != null)
+            {
+                SpringDynamometer springDynamometer = new SpringDynamometer(g, 200, 50, 30);
+            }
+        }
+
+        // 直尺
+        public void DrawRuler()
+        {
+            if (g != null)
+            {
+                Ruler ruler = new Ruler(g, 200, 50, 30);
+            }
+        }
+
+        // 桌子
+        public void DrawDesk()
+        {
+            if (g != null)
+            {
+                Desk desk = new Desk(g, 200, 50, 30);
+            }
+        }
+
+        // 小球
+        public void DrawBall()
+        {
+            if (g != null)
+            {
+                Ball ball = new Ball(g, 200, 50, 30);
+            }
+        }
+
+        // 木块
+        public void DrawBlock()
+        {
+            if (g != null)
+            {
+                Block block = new Block(g, 200, 50, 30);
+            }
+        }
+
+        // 小车
+        public void DrawCar()
+        {
+            if (g != null)
+            {
+                Car desk = new Car(g, 200, 50, 30);
+            }
+        }
+
+        // 凹透镜
+        public void DrawConcavelens()
+        {
+            if (g != null)
+            {
+                Concavelens concavelens = new Concavelens(g, 200, 50, 30);
+            }
+        }
+
+        // 凸透镜
+        public void DrawConvexlens()
+        {
+            if (g != null)
+            {
+                Convexlens convexlens = new Convexlens(g, 200, 50, 30);
+            }
+        }
+
+
+
+
+
 
 
 

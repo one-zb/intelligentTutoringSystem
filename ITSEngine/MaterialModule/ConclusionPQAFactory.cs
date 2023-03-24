@@ -49,6 +49,7 @@ namespace ITS.MaterialModule
                 //// 测试物理画图
                 //CircuitGerneration circuitGeneration = new CircuitGerneration();
                 //circuitGeneration.circuitDraw(topicModule, net);
+
                 string[] imagePath = GDI.Commander.GetImagePath();
                 
                 AddQAs(ref pqa, new[] { 0.5, 0.1, 0.1 }, imagePath, "请按顺序填写下面的空缺：\n" + content + "。",

@@ -49,7 +49,18 @@ namespace ITS.DomainModule
             nameTransformDic.Add("灯泡", "Bulb");
         }
 
-        
+
+        /// <summary>  
+        /// 获取时间戳,因为电路中可能有多个电阻或者多个电流表
+        /// 在元件名字后面加时间戳用于标识当前元件唯一
+        /// </summary>  
+        /// <returns></returns>  
+        public static string GetTimeStamp()
+        {
+            TimeSpan ts = DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0);
+            return Convert.ToInt64(ts.TotalSeconds).ToString();
+        }
+
 
         // 解析语义网
         public void circuitDraw(ConclusionTopicModule topicModule, KRModuleSNet net)
@@ -160,7 +171,7 @@ namespace ITS.DomainModule
 
                                         // 表示是在第一层的元件，从上往下,初始化坐标
                                         PointF position = position1;
-                                        string currentShapeEnglishName = nameTransformDic[nodeTo.Name];
+                                        string currentShapeEnglishName = nameTransformDic[nodeTo.Name]; // 加时间戳标识当前添加的元件唯一
                                         circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
                                         if (!nameToComponent.ContainsKey(currentShapeEnglishName))
                                         {
