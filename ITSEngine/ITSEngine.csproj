@@ -121,6 +121,7 @@
     <Compile Include="DomainModule\Equation.cs" />
     <Compile Include="DomainModule\EquationTopicModule.cs" />
     <Compile Include="DomainModule\EquProceduralStep.cs" />
+    <Compile Include="DomainModule\ExperimentsGraph.cs" />
     <Compile Include="DomainModule\ExperimentTopicModule.cs" />
     <Compile Include="DomainModule\InstrumentKRModule.cs" />
     <Compile Include="DomainModule\InstrumentTopicModule.cs" />

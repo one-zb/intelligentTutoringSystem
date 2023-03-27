@@ -15,7 +15,7 @@
     </Window.Effect>
 
     <Grid Margin="0,0,0,-144">
-        <RichTextBox Name="QuestionTextBox" FontSize="20" Height="387" Margin="10,14,10,0"                      
+        <RichTextBox Name="QuestionTextBox" FontSize="20" Height="387" Margin="10,14,10,0"  Width="1500"                   
 				VerticalScrollBarVisibility="Visible" VerticalAlignment="Top" Background="Beige" IsReadOnly="True"
         />
         <term:InputTextBox x:Name="AnswerInputBox" FontFamily="Courier New" FontSize="18"

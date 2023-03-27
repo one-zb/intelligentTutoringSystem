@@ -47,23 +47,36 @@ namespace ITS.MaterialModule
                 SNNode graphNode = topicModule.GetGraphNode();
                 // 拿到当前结论语义网
                 ConclusionKRModuleSNet currentSNet = new ConclusionKRModuleSNet(net.Net);
-                SNNode imageNode = currentSNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA");
 
-                if (imageNode.Name.Equals("物理图"))
+                // 判断是否有并排绘制 化学图元或者是 化学实验装置组合图绘制需求 即出现 GRANU 连接
+                List<SNNode> res = currentSNet.Net.Neighbours(graphNode, "GRANU");
+                string[] imagePath = GDI.Commander.GetImagePath();
+                if (res.Count != 0)
                 {
-                    // 测试物理画图
-                    CircuitGerneration circuitGeneration = new CircuitGerneration();
-                    circuitGeneration.circuitDraw(topicModule, net);
+                    ExperimentsGraph experimentsGraph = new ExperimentsGraph();
+                    imagePath = experimentsGraph.drawGraph(topicModule, net); // 这里会直接返回生成图片的路径数组
                 } else
                 {
-                    // 如果当前节点需要画图,再进行画图操作 
-                    // 初始化画图命令 这里主要是命令画图 目前数学和化学 部分支持
-                    CMDMatch match = new CMDMatch();
-                    match.GraphMethod(topicModule, net);
+                    // 否则就调用命令库绘制图元
+                    SNNode imageNode = currentSNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA");
+
+                    if (imageNode.Name.Equals("物理图"))
+                    {
+                        // 测试物理画图
+                        CircuitGerneration circuitGeneration = new CircuitGerneration();
+                        circuitGeneration.circuitDraw(topicModule, net);
+                    }
+                    else
+                    {
+                        // 如果当前节点需要画图,再进行画图操作 
+                        // 初始化画图命令 这里主要是命令画图 目前数学和化学 部分支持
+                        CMDMatch match = new CMDMatch();
+                        match.GraphMethod(topicModule, net);
+                    }
                 }
 
-
-                string[] imagePath = GDI.Commander.GetImagePath();
+                
+               
                 
                 AddQAs(ref pqa, new[] { 0.5, 0.1, 0.1 }, imagePath, "请按顺序填写下面的空缺：\n" + content + "。",
                charas.ToArray());

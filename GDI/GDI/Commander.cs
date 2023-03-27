@@ -124,7 +124,7 @@ namespace GDI
         }
 
         // 酒精灯 测试通过
-        [CMD("alcoholamp")]
+        [CMD("alcoholamp", "酒精灯")]
         static public void DrawAlcoholLamp(int flag)
         {
 
@@ -151,7 +151,7 @@ namespace GDI
 
 
         // U型管
-        [CMD("U型管")]
+        [CMD("u型管")]
         static public void DrawUTube(int flag)
         {
 
@@ -273,7 +273,7 @@ namespace GDI
         {
             myGDI.DrawAsbestosNet();
             if (flag == 1)
-            {
+            { 
                 bmp.Save(imagePath);
             }
         }
@@ -294,7 +294,7 @@ namespace GDI
 
 
         // 化学类 铁架台反应瓶 测试通过
-        [CMD("ironsupportflask")]
+        [CMD("ironsupportflask", "铁架台反应瓶")]
         static public void DrawIronSupportFlask(int flag)
         {
 
@@ -308,30 +308,6 @@ namespace GDI
 
        
 
-        // 数学 立体几何 圆柱体 测试通过
-        [CMD("cylinder")]
-        static public void DrawyClinder(int flag)
-        {
-
-
-            myGDI.DrawyClinder();
-            if (flag == 1)
-            {
-                bmp.Save(imagePath);
-            }
-
-        }
-
-        // 棱锥 测试通过
-        [CMD("pyramid")]
-        static public void DrawPyramid(int flag)
-        {
-            myGDI.DrawPyramid();
-            if(flag == 1)
-            {
-                bmp.Save(imagePath);
-            }
-        }
 
         
         // 物理电学部分
@@ -647,6 +623,8 @@ namespace GDI
             }
         }
 
+
+
         // 物理力学部分
 
 
@@ -754,13 +732,39 @@ namespace GDI
 
 
 
+        // 数学
 
+
+        // 数学 立体几何 圆柱体 测试通过
+        [CMD("cylinder", "圆柱")]
+        static public void DrawyClinder(int flag)
+        {
+
+
+            myGDI.DrawyClinder();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+
+        }
+
+        // 棱锥 测试通过
+        [CMD("pyramid", "棱锥")]
+        static public void DrawPyramid(int flag)
+        {
+            myGDI.DrawPyramid();
+            if (flag == 1)
+            {
+                bmp.Save(imagePath);
+            }
+        }
 
 
 
 
         // 延长AB到0点 测试通过
-        [CMD("extendline")]
+        [CMD("extendline", "延长")]
         static public void DrawExtendLine(string A, string B, string O, int flag)
         {
 
@@ -791,7 +795,7 @@ namespace GDI
 
 
         // 在已知三角形ABC中任取一点O 测试通过
-        [CMD("tranglefreepoint")]
+        [CMD("tranglefreepoint", "三角形内任取一点")]
         static public void DrawFreePointInTrangle(string A, string B, string C, string O, int flag)
         {
 
@@ -808,7 +812,7 @@ namespace GDI
 
 
         // 在已知线段AB上随机取一个点0 测试通过
-        [CMD("linefreepoint")]
+        [CMD("linefreepoint", "线段上任取一点")]
         static public void DrawFreePoint(string A, string B, string O, int flag)
         {
 
@@ -824,7 +828,7 @@ namespace GDI
 
 
         // 画一个角ABC的角平分线BO 测试通过
-        [CMD("anglebisector")]
+        [CMD("anglebisector", "角平分线")]
         static public void DrawAngleBisector(string A, string B, string C, string O, int flag)
         {
 
@@ -838,7 +842,7 @@ namespace GDI
 
 
         // 在一个正方形ABCD或者矩形内任取一个点O 测试通过
-        [CMD("insidepoint")]
+        [CMD("insidepoint","四边形里任取一点")]
         static public void DrawFreePoint(string A, string B, string C, string D, string O, int flag)
         {
 
@@ -853,7 +857,7 @@ namespace GDI
 
 
         // 画一个任意凸四边形ABCD 测试通过
-        [CMD("tusquare")]
+        [CMD("tusquare", "凸四边形")]
         static public void DrawTuSquare(string A, string B, string C, string D, int flag)
         {
 
@@ -866,7 +870,7 @@ namespace GDI
         }
 
         // 在已知的一个四边形中，在其中的AB一条边的外边画一个点C 测试通过
-        [CMD("outsidepoint")]
+        [CMD("outsidepoint", "线外任取一点")]
         static public void DrawPointOutSide(string A, string B, string C, int flag)
         {
 
@@ -881,7 +885,7 @@ namespace GDI
          
 
         // 显示三角形ABC外心 D 测试通过
-        [CMD("outcenter")]
+        [CMD("outcenter","三角形外心")]
         static public void DrawOutCenter(string A, string B, string C, string D, int flag)
         {
 
@@ -894,7 +898,7 @@ namespace GDI
         }
 
         // 显示三角形ABC垂心 D 测试通过
-        [CMD("verticalcenter")]
+        [CMD("verticalcenter", "三角形垂心")]
         static public void DrawVerticalCenter(string A, string B, string C, string D, int flag)
         {
             myGDI.DrawVerticalCenter(A, B, C, D);
@@ -907,7 +911,7 @@ namespace GDI
         // 当提取到一个三角形ABC的时候 可以直接创建一个三角形 示意图为等边三角形 不精确 
         // 只要识别是画三角形 就直接用这示意图
         // 测试通过
-        [CMD("trangle" )]
+        [CMD("trangle", "三角形")]
         static public void DrawTrangle (string A, string B, string C, int flag)
         {
 
@@ -919,7 +923,7 @@ namespace GDI
         }
 
         // 测试通过 画一个矩形 或者 任意四边形
-        [CMD("rectangle")]
+        [CMD("rectangle", "矩形")]
         static public void DrawRectangle(string A, string B, string C, string D, int flag)
         {
 
@@ -931,7 +935,7 @@ namespace GDI
         }
 
         // 测试通过 画一个正方形
-        [CMD("square")]
+        [CMD("square", "正方形")]
         static public void DrawSquare(string A, string B, string C, string D, int flag)
         {
 
@@ -943,7 +947,7 @@ namespace GDI
         }
 
         // 画一个平行四边形  测试通过
-        [CMD("parasquare")]
+        [CMD("parasquare", "平行四边形")]
         static public void DrawParaSquare(string A, string B, string C, string D, int flag)
         {
 
@@ -968,7 +972,7 @@ namespace GDI
         //}
 
         //带参数的重载画线段 传进来字母 初始化 画线段AB 测试已通过
-        [CMD("边AB", "边", "segment")]
+        [CMD("边AB", "边", "segment", "连接")]
         static public void DrawLineAB(string A, string B, int flag)
         {
             //myGDI = new GDILib(Test.test.pictureBox1.CreateGraphics());
@@ -985,7 +989,7 @@ namespace GDI
 
 
         //随机画一个点 测试已通过
-        [CMD("freepoint")]
+        [CMD("freepoint", "随机点")]
         static public void DrawFreePoint(string pointName, int flag)
         {
              
@@ -1002,7 +1006,7 @@ namespace GDI
         // 在上一个命令画出的线段中 画一个中点  也就是说 画布上已经存在一个线段 然后在这个线段上画中点
         //ABD 表示在AB上画中点
         //测试已通过 
-        [CMD("midpoint")]
+        [CMD("midpoint", "中点")]
         static public void DrawMidPoint(string pointA, string pointB,string midPoint, int flag)
         {
             
@@ -1017,7 +1021,7 @@ namespace GDI
 
 
         // 画平行线 AB // CD  测试通过 
-        [CMD("paraline")]
+        [CMD("paraline", "平行")]
         static public void DrawParaLine(string A, string B, string C, string D, int flag)
         {
 
@@ -1032,7 +1036,7 @@ namespace GDI
 
         // 画AB垂直CD  AB是画布上已知直线 C 是已知直线外一点  垂足为D 这个顺序不能变
         // 测试通过
-        [CMD("vertical")]
+        [CMD("vertical", "垂直")]
         static public void DrawVertical(string A, string B, string C, string D, int flag)
         {
 
@@ -1047,7 +1051,7 @@ namespace GDI
 
 
         // 画已知三角形的外接圆 测试通过
-        [CMD("outcircle")]
+        [CMD("outcircle", "外接圆")]
         static public void DrawOutCircle(string A, string B, string C, int flag)
         {
 
@@ -1062,7 +1066,7 @@ namespace GDI
 
 
         // 画已知两条直线的交点 并且显示交点 测试通过
-        [CMD("insertpoint")]
+        [CMD("insertpoint", "相交")]
         static public void DrawInsertPoint(string A, string B, string C, string D, string F, int flag)
         {
 

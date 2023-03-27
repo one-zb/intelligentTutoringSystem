@@ -1517,6 +1517,43 @@ namespace GDI
             connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1], ironSupport.connectPoints[2] });
         }
     }//铁架台 反应瓶 漏斗
+    public class IronSupport_AlcoholLamp : ChemistryGdi // 铁架台 酒精灯
+    {
+        public IronSupport_AlcoholLamp(Graphics g, float x1, float y1, int mode1 = 0, bool isLiquid = false, float size = 10, float angle = 0)
+        {
+            List<PointF> I = GDIAuxiliary.GetInstance().gdiDic["IronSupport"];
+            float xAux = x1 - I[0].X;
+            float yAux = y1 - I[0].Y;
+            IronSupport ironSupport = new IronSupport(g, xAux, yAux, 0.3f, size);
+            AlcoholLamp alcoholLamp = new AlcoholLamp(g, ironSupport.connectPoints[2].X, ironSupport.connectPoints[2].Y, size);
+            this.x = ironSupport.centerPoint.X;
+            this.y = ironSupport.centerPoint.Y;
+            connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[0], ironSupport.connectPoints[1] });
+            if (isLiquid)
+            {
+                alcoholLamp.DrawLiquid();
+            }
+        }
+    } // 铁架台 酒精灯
+    public class IronSupport_AlcoholLamp_AsbestosNet : ChemistryGdi // 铁架台 酒精灯 石棉网
+    {
+        public IronSupport_AlcoholLamp_AsbestosNet(Graphics g, float x1, float y1, int mode1 = 0, bool isLiquid = false, float size = 10, float angle = 0)
+        {
+            List<PointF> I = GDIAuxiliary.GetInstance().gdiDic["IronSupport"];
+            float xAux = x1 - I[0].X;
+            float yAux = y1 - I[0].Y;
+            IronSupport ironSupport = new IronSupport(g, xAux, yAux, 0.3f, size);
+            AlcoholLamp alcoholLamp = new AlcoholLamp(g, ironSupport.connectPoints[2].X, ironSupport.connectPoints[2].Y, size);
+            AsbestosNet asbestosNet = new AsbestosNet(g, ironSupport.connectPoints[1].X, ironSupport.connectPoints[1].Y, size);
+            this.x = ironSupport.centerPoint.X;
+            this.y = ironSupport.centerPoint.Y;
+            connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[0] });
+            if (isLiquid)
+            {
+                alcoholLamp.DrawLiquid();
+            }
+        }
+    } // 铁架台 酒精灯 石棉网
     public class IronSupport_Flask_AlcoholLamp : ChemistryGdi //铁架台 反应瓶 酒精灯
     {
          public IronSupport_Flask_AlcoholLamp(Graphics g, float x1, float y1, int mode1 = 0,bool isLiquid=false, float size = 10, float angle = 0)

@@ -50,7 +50,7 @@ namespace GDI
         {
             if (g != null)
             {
-                IronSupport ironSupport = new IronSupport(g, 250, 250, 10);
+                IronSupport ironSupport = new IronSupport(g, 250, 250, 0.3f);
             }
         }
 

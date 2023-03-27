@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace GDI
 {
-     class GDIGraphGeneration
+     public class GDIGraphGeneration
     {
         ShapeFactory shapeFactory = new ShapeFactory();
         GDIGraphNode currentGDIGraph = new GDIGraphNode();
@@ -33,6 +33,7 @@ namespace GDI
             nameTransformDic.Add("玻璃管", new List<string>() { "GlassTube", "0", "0" });
             nameTransformDic.Add("短玻璃管", new List<string>() { "GlassTube", "0", "0" });
             nameTransformDic.Add("长玻璃管", new List<string>() { "GlassTube", "1", "1" });
+            nameTransformDic.Add("试管", new List<string>() { "TestTube", "0", "0" });
             //英文到中文
             nameTransformDic2.Add( "Beaker","烧杯");//第一个系数 为图元名称 后面为 mode 具体的图元子类的选择
             nameTransformDic2.Add("AsbestosNet","石棉网");
@@ -43,21 +44,25 @@ namespace GDI
             nameTransformDic2.Add( "Funnel","漏斗");
             nameTransformDic2.Add(  "GlassRod","玻璃棒");
             nameTransformDic2.Add( "GlassTube","玻璃管");
+            nameTransformDic2.Add("TestTube", "试管");
+
             //已有的组合图元
-            shapeList.Add("IronSupport_Flask");
-            shapeList.Add("IronSupport_Flask_Funnel");
-            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp_AsbestosNet");
-            shapeList.Add("IronSupport_Funnel_TestTube");
-            shapeList.Add("Flask_Funnel");
-            shapeList.Add("TestTube_Funnel");
-            shapeList.Add("GlassTube_Flask_GlassTube");
-            shapeList.Add("TestTube_GlassTube");
-            shapeList.Add("GlassTube_Bottle_GlassTube");
-            shapeList.Add("Beaker_GlassRod");
-            shapeList.Add("IronSupport_Flask_AlcoholLamp_AsbestosNet");
-            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp");
-            shapeList.Add("IronSupport_Flask_AlcoholLamp");
-           
+            shapeList.Add("IronSupport_Flask"); // 铁架台 反应瓶
+            shapeList.Add("IronSupport_AlcoholLamp"); // 铁架台 酒精灯
+            shapeList.Add("IronSupport_AlcoholLamp_AsbestosNet"); // 铁架台 酒精灯 石棉网
+            shapeList.Add("IronSupport_Flask_Funnel"); // 铁架台 反应瓶 漏斗
+            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp_AsbestosNet"); // 铁架台 反应瓶 漏斗 酒精灯 石棉网
+            shapeList.Add("IronSupport_Funnel_TestTube"); // 铁架台 漏斗 试管
+            shapeList.Add("Flask_Funnel"); // 反应瓶 漏斗
+            shapeList.Add("TestTube_Funnel"); // 试管 漏斗
+            shapeList.Add("GlassTube_Flask_GlassTube"); // 玻璃管 反应瓶 玻璃管
+            shapeList.Add("GlassTube_Bottle_GlassTube"); // 玻璃管 广口瓶 玻璃管
+            shapeList.Add("Beaker_GlassRod"); // 烧杯 玻璃棒
+            shapeList.Add("IronSupport_Flask_AlcoholLamp_AsbestosNet"); // 铁架台 反应瓶 酒精灯 石棉网
+            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp"); // 铁架台 反应瓶 漏斗 酒精灯
+            shapeList.Add("IronSupport_Flask_AlcoholLamp"); // 铁架台 反应瓶 酒精灯
+            //shapeList.Add("TestTube_GlassTube"); // 试管 玻璃管  这个暂时不要组合 直接按个独立生成即可 
+
         }
         //匹配备选队列最佳图元  选择出对列中包含用户要画的图形最多的组合图形 
         private List<string> getLongGraph(Queue<List<string>> myQueue,List<string> gdiGraph,int index) 
@@ -288,6 +293,10 @@ namespace GDI
                 return new AsbestosNet(graphic, x, y);
             else if (shapeType == "IronSupport_Flask")
                 return new IronSupport_Flask(graphic, x, y,mode1);
+            else if (shapeType == "IronSupport_AlcoholLamp")
+                return new IronSupport_AlcoholLamp(graphic, x, y, mode1);
+            else if (shapeType == "IronSupport_AlcoholLamp_AsbestosNet")
+                return new IronSupport_AlcoholLamp_AsbestosNet(graphic, x, y, mode1);
             else if (shapeType == "IronSupport_Flask_Funnel")
                 return new IronSupport_Flask_Funnel(graphic, x, y,mode1,mode2);
             else if (shapeType == "IronSupport_Flask_AlcoholLamp")

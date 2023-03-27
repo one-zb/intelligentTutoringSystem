@@ -54,16 +54,16 @@ namespace ITS.DomainModule
                 try
                 {
 
-                    // 测试化学中文命令 截取中文
-                    //M = icmd.Cmd[Regex.Replace(cmd, @"[^\u4e00-\u9fbb]", "")];
+                    // 测试化学中文命令 截取中文 这里使用三个学科全部使用中文命令 在化学仪器中涉及到u形管 这里可以保存小写字母
+                    M = icmd.Cmd[Regex.Replace(cmd, @"[^a-z\u4e00-\u9fbb]", "")];
 
                     //如果该命令在节点中是有多个单词表示，先去除单词间的空格
                     //String command = cmd.Replace(" ", "");
                     // segmentAB 截取 segmengt 表示画线段方法 就行了
 
-                    // 测试数学命令 作图
+                    // 测试数学命令 作图 这里是测试使用英文命令
                     // 如果是多个单词 例如 sulfur dioxide experiment，这里截取结果就是保留小写字母和空格 \u0020表示空格
-                    M = icmd.Cmd[Regex.Replace(cmd, @"[^a-z\u0020]+", "")];
+                    //M = icmd.Cmd[Regex.Replace(cmd, @"[^a-z\u0020]+", "")];
                     // cmd为segmentAB
 
                     // 截取 segmentAB 截取 AB  用来表示线段两端的字母 传参
