@@ -117,7 +117,8 @@ namespace ITS.DomainModule
                                     //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
                                     string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                     PhysicalElectricityGdi currentComponent = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y); // 绘制并联元件
-                                    circuitDiagram.Add(currentShapeEnglishName, position); // 把元件名字 和中心点坐标添加进去
+                                    circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
+                                    nameToComponent.Add(nodeTo.Name, currentComponent);
                                     string leftConnectedPointIndex = net.Net.Rational(nodeFrom, nodeTo).StartMulti;
                                     string rightConnectedPointIndex = net.Net.Rational(nodeFrom, nodeTo).EndMulti;
 
@@ -175,7 +176,7 @@ namespace ITS.DomainModule
                                         //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
                                         string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                         circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
-                                        if (!nameToComponent.ContainsKey(currentShapeEnglishName))
+                                        if (!nameToComponent.ContainsKey(nodeTo.Name))
                                         {
                                             // 如果该元件没有绘制，就绘制
                                             PhysicalElectricityGdi component = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y);
@@ -195,7 +196,7 @@ namespace ITS.DomainModule
                                         //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
                                         string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                         circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
-                                        if (!nameToComponent.ContainsKey(currentShapeEnglishName))
+                                        if (!nameToComponent.ContainsKey(nodeTo.Name))
                                         {
                                             // 如果该元件没有绘制，就绘制
                                             PhysicalElectricityGdi component = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y);
@@ -215,7 +216,7 @@ namespace ITS.DomainModule
                                         //有多个电阻时 用电阻1 来区分，所以截取汉字作为元件名字
                                         string currentShapeEnglishName = nameTransformDic[Regex.Replace(nodeTo.Name, @"[^\u4e00-\u9fbb]", "")];
                                         circuitDiagram.Add(nodeTo.Name, position); // 把元件名字 和中心点坐标添加进去
-                                        if (!nameToComponent.ContainsKey(currentShapeEnglishName))
+                                        if (!nameToComponent.ContainsKey(nodeTo.Name))
                                         {
                                             // 如果该元件没有绘制，就绘制
                                             PhysicalElectricityGdi component = circuitShapeFacotory.getPhysicalShape(g, currentShapeEnglishName, position.X, position.Y);
