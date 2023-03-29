@@ -165,7 +165,7 @@ namespace GDI
             List<string> alternativeGraph;
 
             //对于用户传入的图器件数组进行后序遍历 先拿出数组最后一个图元
-            for (int i = gdiGraph.Count-1; i >0; --i)
+            for (int i = gdiGraph.Count-1; i >= 0; --i)
             {
                 
                 //用户传进来的中文 这里转换成英文 从 MAP集合中取出 该图元对象信息
@@ -230,8 +230,8 @@ namespace GDI
                 {
 
                     // alternativeGraph 集合三个对象对象格式：[组合图形("IronSupport_Flask")  "0", "0" ]
-                    //确认选择哪个组合图元
-                    i = i - alternativeGraph[0].Split('_').ToList().Count+1;//如果i=0说明图形已经完成了
+                    //确认选择哪个组合图元 例如这里传进来三个元件 0 1 2  然后刚好后面两个是组合图形，那么下一个循环i 就要从 0 开始遍历绘制
+                    i = i - alternativeGraph[0].Split('_').ToList().Count + 1;//如果i=0说明还剩 索引为0 这第一个元件需要绘制了 但是要记住 这个i 到下一轮循环会自动减1，这是在for循环里，所以要加1 千万要注意
                     if (currentGDIGraph.connectPointsDic.Count==0)//没有联接点说明，是第一个画的图元
                     {
                         ChemistryGdi shape = shapeFactory.getShape(g, alternativeGraph[0], 100, 300,int.Parse(alternativeGraph[1]),int.Parse( alternativeGraph[2]));//初始化第一个实例的器材
