@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 
 
@@ -37,7 +38,179 @@ namespace GDI
             //g.Clear(System.Drawing.Color.White);
         }
 
-        // 化学
+        /// <summary>
+        /// 化学实验
+        /// </summary>
+
+        // 化学仪器
+
+
+        // 铁架台
+        public void DrawIronSupport()
+        {
+            if (g != null)
+            {
+                IronSupport ironSupport = new IronSupport(g, 250, 250, 0.3f);
+            }
+        }
+
+        // 烧杯
+        public void DrawBeaker()
+        {
+            if (g != null)
+            {
+                Beaker beaker = new Beaker(g, 250, 250, 10);
+            }
+        }
+
+        // 广口瓶
+        public void DrawBottle()
+        {
+            if (g != null)
+            {
+                Bottle bottle = new Bottle(g, 250, 250, 10);
+            }
+        }
+
+        // 烧瓶
+        public void DrawFlask()
+        {
+            if (g != null)
+            {
+                Flask flask = new Flask(g, 250, 250, 10);
+            }
+        }
+
+        // 试管
+        public void DrawTestTube()
+        {
+            if (g != null)
+            {
+                TestTube testTube = new TestTube(g, 250, 250, 10);
+            }
+        }
+
+
+        // 酒精灯 AlcoholLamp
+        public void DrawAlcoholLamp()
+        {
+            if (g != null)
+            {
+                AlcoholLamp alcoholLamp = new AlcoholLamp(g, 250, 250, 10);
+            }
+        }
+
+        // 漏斗
+        public void DrawFunnel()
+        {
+            if (g != null)
+            {
+                Funnel funnel = new Funnel(g, 250, 250, 10);
+            }
+        }
+
+        // U型管
+        public void DrawUTube()
+        {
+            if (g != null)
+            {
+                U_Tube u_Tube = new U_Tube(g, 250, 250, 10);
+            }
+        }
+
+        // 水槽
+        public void DrawSink()
+        {
+            if (g != null)
+            {
+                Sink sink = new Sink(g, 250, 250, 10);
+            }
+        }
+
+        // 表面皿
+        public void DrawWatchGlass()
+        {
+            if (g != null)
+            {
+                WatchGlass watchGlass = new WatchGlass(g, 250, 250, 10);
+            }
+        }
+
+
+        // 量筒
+        public void DrawVolumetricCylinder()
+        {
+            if (g != null)
+            {
+                VolumetricCylinder volumetricCylinder = new VolumetricCylinder(g, 250, 300, 20);
+            }
+        }
+
+        // 玻璃棒
+        public void DrawGlassRod()
+        {
+            if (g != null)
+            {
+                GlassRod glassRod = new GlassRod(g, 250, 300, 20);
+            }
+        }
+
+        // 细口瓶
+        public void DrawNarrowNeckedBottle()
+        {
+            if (g != null)
+            {
+                NarrowNeckedBottle narrowNeckedBottle = new NarrowNeckedBottle(g, 250, 300, 20);
+            }
+        }
+
+        // 燃烧匙
+        public void DrawCombustionSpoon()
+        {
+            if (g != null)
+            {
+                CombustionSpoon combustionSpoon = new CombustionSpoon(g, 250, 300, 20);
+            }
+        }
+
+        // 胶头滴管
+        public void DrawDropper()
+        {
+            if (g != null)
+            {
+                Dropper dropper = new Dropper(g, 250, 300, 20);
+            }
+        }
+
+        // 三口烧瓶
+        public void DrawThreeNeckedFlask()
+        {
+            if (g != null)
+            {
+                ThreeNeckedFlask threeNeckedFlask = new ThreeNeckedFlask(g, 250, 300, 20);
+            }
+        }
+
+        // 玻璃管
+        public void DrawGlassTube()
+        {
+            if (g != null)
+            {
+                GlassTube glassTube = new GlassTube(g, 250, 300, 20);
+            }
+        }
+
+        // 石棉网
+        public void DrawAsbestosNet()
+        {
+            if (g != null)
+            {
+                AsbestosNet asbestosNet = new AsbestosNet(g, 250, 300, 20);
+            }
+        }
+
+
+
         // 二氧化硫制备实验图 测试通过
         public void DrawSO2()
         {
@@ -51,7 +224,7 @@ namespace GDI
             }
         }
 
-        // 化学 画铁架台加烧瓶
+        // 画铁架台加烧瓶
         public void DrawIronSupportFlask()
         {
             if(g != null)
@@ -60,19 +233,730 @@ namespace GDI
             }
         }
 
-        // 化学 
-        public void DrawBottle()
+       
+
+
+        
+
+
+
+
+        // 数学 立方体几何
+        // 圆柱体
+        public void DrawyClinder()
         {
             if (g != null)
             {
-                Bottle bottle = new Bottle(g, 250, 250, 10);
+                Cylinder cylinder = new Cylinder(g, 200, 50);
+            }
+        }
+
+        // 棱锥
+        public void DrawPyramid()
+        {
+            if(g != null)
+            {
+                Pyramid pyramid = new Pyramid(g, 200, 50, 2);
+            }
+        }
+
+
+       // 物理电学
+
+        // 电流表
+        public void DrawAmmeter()
+        {
+            if (g != null)
+            {
+                Ammeter ammeter = new Ammeter(g, 200, 50, 30);
+            }
+        }
+
+        // 电压表
+        public void DrawVoltmeter()
+        {
+            if (g != null)
+            {
+                Voltmeter voltmeter = new Voltmeter(g, 200, 50, 30);
+            }
+        }
+
+        // 电动机
+        public void DrawMotor()
+        {
+            if (g != null)
+            {
+                Motor motor = new Motor(g, 200, 50, 30);
+            }
+        }
+
+        // 电阻
+        public void DrawResistance()
+        {
+            if (g != null)
+            {
+                Resistance resistance = new Resistance(g, 200, 50, 30);
+            }
+        }
+
+        // 滑动变阻器
+        public void DrawSlidingRheostat()
+        {
+            if (g != null)
+            {
+                SlidingRheostat slidingRheostat = new SlidingRheostat(g, 200, 50, 30);
+            }
+        }
+
+        // 灯泡
+        public void DrawBulb()
+        {
+            if (g != null)
+            {
+                Bulb bulb = new Bulb(g, 200, 50, 30);
+            }
+        }
+
+
+        // 开关
+        public void DrawSwitch()
+        {
+            if (g != null)
+            {
+                Switch switchs = new Switch(g, 200, 50, 30);
+            }
+        }
+
+        // 电源
+        public void DrawPower()
+        {
+            if (g != null)
+            {
+                Power power = new Power(g, 200, 50, 30);
+            }
+        }
+
+        // 电容
+        public void DrawCapacitor()
+        {
+            if (g != null)
+            {
+                Capacitor capacitor = new Capacitor(g, 200, 50, 30);
+            }
+        }
+
+        // 铃铛
+        public void DrawBell()
+        {
+            if (g != null)
+            {
+                Bell bell = new Bell(g, 200, 50, 30);
+            }
+        }
+
+        // 铃铛
+        public void DrawDiode()
+        {
+            if (g != null)
+            {
+                Diode diode = new Diode(g, 200, 50, 30);
+            }
+        }
+
+        // 三极管
+        public void DrawTriode()
+        {
+            if (g != null)
+            {
+                Triode triode = new Triode(g, 200, 50, 30);
+            }
+        }
+
+        // 接地极
+        public void DrawGround()
+        {
+            if (g != null)
+            {
+                Ground ground = new Ground(g, 200, 50, 30);
+            }
+        }
+
+        // 扬声器
+        public void DrawSpeaker()
+        {
+            if (g != null)
+            {
+                Speaker speaker = new Speaker(g, 200, 50, 30);
+            }
+        }
+
+        // 倒相放大器 非门
+        public void DrawNotGate()
+        {
+            if (g != null)
+            {
+                NotGate notGate = new NotGate(g, 200, 50, 30);
+            }
+        }
+
+        // 与门
+        public void DrawAndGate()
+        {
+            if (g != null)
+            {
+                AndGate notGate = new AndGate(g, 200, 50, 30);
+            }
+        }
+
+        // 或门
+        public void DrawOrGate()
+        {
+            if (g != null)
+            {
+                OrGate orGate = new OrGate(g, 200, 50, 30);
+            }
+        }
+
+
+        // 与非门
+        public void DrawNAndGate()
+        {
+            if (g != null)
+            {
+                NAndGate nAndGate = new NAndGate(g, 200, 50, 30);
+            }
+        }
+
+        // 或非门
+        public void DrawNOrGate()
+        {
+            if (g != null)
+            {
+                NOrGate nOrGate = new NOrGate(g, 200, 50, 30);
+            }
+        }
+
+        // 异或门
+        public void DrawXOrGate()
+        {
+            if (g != null)
+            {
+                XOrGate xOrGate = new XOrGate(g, 200, 50, 30);
+            }
+        }
+
+        // 运算放大器
+        public void DrawOperationalAmplifier()
+        {
+            if (g != null)
+            {
+                OperationalAmplifier operationalAmplifier = new OperationalAmplifier(g, 200, 50, 30);
+            }
+        }
+
+        // 信号源
+        public void DrawSignalSource()
+        {
+            if (g != null)
+            {
+                SignalSource signalSource = new SignalSource(g, 200, 50, 30);
+            }
+        }
+
+        // 石英晶体振荡器
+        public void DrawCrystalOscillator()
+        {
+            if (g != null)
+            {
+                CrystalOscillator crystalOscillator = new CrystalOscillator(g, 200, 50, 30);
+            }
+        }
+
+        // 保险丝
+        public void DrawFuse()
+        {
+            if (g != null)
+            {
+                Fuse Fuse = new Fuse(g, 200, 50, 30);
+            }
+        }
+
+        // 报警器
+        public void DrawAlarmSystem()
+        {
+            if (g != null)
+            {
+                AlarmSystem alarmSystem = new AlarmSystem(g, 200, 50, 30);
+            }
+        }
+
+        // 电感器
+        public void DrawInductor()
+        {
+            if (g != null)
+            {
+                Inductor inductor = new Inductor(g, 200, 50, 30);
+            }
+        }
+
+
+        // 电阻箱
+        public void DrawResistanceBox()
+        {
+            if (g != null)
+            {
+                ResistanceBox resistanceBox = new ResistanceBox(g, 200, 50, 30);
+            }
+        }
+
+        // 电阻箱
+        public void DrawResistanceWire()
+        {
+            if (g != null)
+            {
+                ResistanceWire resistanceWire = new ResistanceWire(g, 200, 50, 30);
+            }
+        }
+
+        // 物理力学部分
+
+        // 游标卡尺
+        public void DrawVernierCaliper()
+        {
+            if (g != null)
+            {
+                VernierCaliper vernierCaliper = new VernierCaliper(g, 200, 50, 30);
+            }
+        }
+
+        // 弹簧测力仪
+        public void DrawSpringDynamometer()
+        {
+            if (g != null)
+            {
+                SpringDynamometer springDynamometer = new SpringDynamometer(g, 200, 50, 30);
+            }
+        }
+
+        // 直尺
+        public void DrawRuler()
+        {
+            if (g != null)
+            {
+                Ruler ruler = new Ruler(g, 200, 50, 30);
+            }
+        }
+
+        // 桌子
+        public void DrawDesk()
+        {
+            if (g != null)
+            {
+                Desk desk = new Desk(g, 200, 50, 30);
+            }
+        }
+
+        // 小球
+        public void DrawBall()
+        {
+            if (g != null)
+            {
+                Ball ball = new Ball(g, 200, 50, 30);
+            }
+        }
+
+        // 木块
+        public void DrawBlock()
+        {
+            if (g != null)
+            {
+                Block block = new Block(g, 200, 50, 30);
+            }
+        }
+
+        // 小车
+        public void DrawCar()
+        {
+            if (g != null)
+            {
+                Car desk = new Car(g, 200, 50, 30);
+            }
+        }
+
+        // 凹透镜
+        public void DrawConcavelens()
+        {
+            if (g != null)
+            {
+                Concavelens concavelens = new Concavelens(g, 200, 50, 30);
+            }
+        }
+
+        // 凸透镜
+        public void DrawConvexlens()
+        {
+            if (g != null)
+            {
+                Convexlens convexlens = new Convexlens(g, 200, 50, 30);
             }
         }
 
 
 
-        // 画三角形的角平分线 TODO
 
+
+
+
+
+
+
+        /// <summary>
+        /// 数学 初中平面几何
+        /// </summary>
+
+
+
+
+        // 画已知线段AB的延长线 A0 往AB方向正方形延长到0 延长100 测试通过
+        public void DrawExtendLine(string A, string B, string O)
+        {
+            if(g != null)
+            {
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+                // 拿到已知线段 两点
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+
+                int x1 = pointA.X;
+                int y1 = pointA.Y;
+                int x2 = pointB.X;
+                int y2 = pointB.Y;
+                
+
+                //计算原线段的长度（以公里为单位）和角度（以弧度为单位）
+                double distance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+                double angle = Math.Atan2(y2 - y1, x2 - x1);
+
+                //沿着原线段AB正方向延长 延长长度为100
+                int x3 =(int)(x2 + 100 * Math.Cos(angle));
+                int y3 =(int)(y2 + 100 * Math.Sin(angle));
+
+                //沿着原线段相反方向延长
+                //x3 = x1 - length * Math.Cos(angle);
+                //y3 = y1 - length * Math.Sin(angle);
+
+
+                // 创建一个PointF对象，表示延长线的终点
+                Point p3 = new Point(x3, y3);
+                // 把新生成的点加入点集合中
+                nameToPoint.Add(O, p3);
+                g.DrawLine(pen, pointA, p3);
+
+
+                // 拿到要画的点
+                string textE = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示黑点和字母E
+                g.FillEllipse(Brushes.Black, p3.X, p3.Y, 4, 4);
+                g.DrawString(textE, textFont, textBrush, p3.X, p3.Y + 10);
+            }
+        }
+
+
+
+        // 在已知三角形ABC中，以AB为边画一个正方形 E F顺序是在图中从左到右的 TODO
+        public void DrawSquareWithline(string A, string B, string C, string E, string F)
+        {
+            if(g != null)
+            {
+
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+
+                int x1 = pointA.X;
+                int x2 = pointB.X;
+
+                int y1 = pointA.Y;
+                int y2 = pointB.Y;
+
+
+
+
+                // 计算边长
+                double side = Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+
+                // 计算中点
+                double midX = (x1 + x2) / 2;
+                double midY = (y1 + y2) / 2;
+
+                // 画出圆
+                g.DrawEllipse(pen, (float)(midX - side / 2), (float)(midY - side / 2), (float)side, (float)side);
+
+                // 计算切点
+                double angle = Math.Atan((y2 - y1) / (x2 - x1));
+                double offsetX = side / 2 * Math.Sin(angle);
+                double offsetY = side / 2 * Math.Cos(angle);
+
+                // 画出正方形的另外三条边
+                Point pointE = new Point((int)(midX - offsetX), (int)(midY + offsetY));
+                Point pointF = new Point((int)(midX + offsetX), (int)(midY - offsetY));
+
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(E, pointE);
+                nameToPoint.Add(F, pointF);
+
+                g.DrawLine(pen, pointE, pointF);
+                g.DrawLine(pen, pointF, pointA);
+                g.DrawLine(pen, pointE, pointB);
+                
+
+                // 拿到要画的点
+                string textE = E;
+                string textF = F;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示黑点和字母E
+                g.FillEllipse(Brushes.Black, pointE.X, pointE.Y, 4, 4);
+                g.DrawString(textE, textFont, textBrush, pointE.X, pointE.Y + 10);
+
+                // 显示字母
+                g.FillEllipse(Brushes.Black, pointF.X, pointF.Y, 4, 4);
+                g.DrawString(textF, textFont, textBrush, pointF.X, pointF.Y + 10);
+            }
+        }
+
+
+        // 在已知三角形ABC中任取一点 0 测试通过
+        public void DrawFreePointInTrangle(string A, string B, string C, string O)
+        {
+            if(g != null)
+            {
+                Point pointA = nameToPoint[A];
+                Point pointB = nameToPoint[B];
+                Point pointC = nameToPoint[C];
+
+                //三角形顶点
+                Vector3 AA = new Vector3(pointA.X, pointA.Y, 0);
+                Vector3 BB = new Vector3(pointB.X, pointB.Y, 0);
+                Vector3 CC = new Vector3(pointC.Y, pointC.Y, 0);
+
+                //边向量
+                Vector3 e1 = BB - AA;
+                Vector3 e2 = CC - AA;
+
+                //随机数生成器
+                Random random = new Random();
+
+                //随机坐标
+                float x = (float)random.NextDouble();
+                float y = (float)random.NextDouble();
+
+                //反射处理
+                if (x + y > 1)
+                {
+                    x = 1 - x;
+                    y = 1 - y;
+                }
+
+                //随机点
+                Vector3 p = x * e1 + y * e2 + AA;
+                Point freePoint = new Point((int)p.X,(int)p.Y);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, freePoint);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, freePoint.X, freePoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, freePoint.X, freePoint.Y + 10);
+
+            }
+        }
+        
+
+
+        // 在已知线段上AB随机取一个点0 测试通过
+        public void DrawFreePoint(string A, string B, string O)
+        {
+            if(g != null)
+            {
+                // 拿到这两点 AB坐标
+                Point start = nameToPoint[A];
+                Point end = nameToPoint[B];
+                ;
+                // 随机数 r
+                Random random = new Random();
+                double r = random.NextDouble();
+                Point freePoint = new Point();
+                freePoint.X = (int)(start.X + (int)(end.X - start.X) * r);
+                freePoint.Y = (int)(start.Y + (int)(end.Y - start.Y) * r);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, freePoint);
+
+
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, freePoint.X, freePoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, freePoint.X, freePoint.Y + 10);
+            }
+        }
+
+        // 画三角形的∠ABC的角平分线 B点是开始点，两边分别是BA BC 测试通过
+        public void DrawAngleBisector(string A, string B, string C, string O)
+        {
+            if(g != null)
+            {
+                Point start = nameToPoint[B];
+                Point end1 = nameToPoint[A];
+                Point end2 = nameToPoint[C];
+
+                // 创建画笔
+                Pen pen = new Pen(Color.Black);
+                // 计算两条边的夹角（弧度）
+                double angle = Math.Atan2(end2.Y - start.Y, end2.X - start.X) - Math.Atan2(end1.Y - start.Y, end1.X - start.X);
+                // 计算角平分线与Y轴正方向的夹角（弧度）
+                double bisectorAngle = Math.Atan2(end1.Y - start.Y, end1.X - start.X) + angle / 2;
+                // 计算角平分线上的一个点的坐标（假设Y坐标差为50）
+                int dy = 50;
+                int dx = (int)(dy / Math.Tan(bisectorAngle));
+
+                Point bisectorPoint = new Point();
+                if (start.Y < end1.Y && start.Y < end2.Y)
+                {
+                    // 如果这个起始点是三角形的顶点，也就是离X轴最近的点
+                    bisectorPoint = new Point(start.X + dx, start.Y + dy);
+                    // 生成新点之后要加入点集合中
+                    nameToPoint.Add(O, bisectorPoint);
+                } else
+                {
+                    bisectorPoint = new Point(start.X - dx, start.Y - dy);
+                    // 生成新点之后要加入点集合中
+                    nameToPoint.Add(O, bisectorPoint);
+                }
+               
+
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, bisectorPoint.X, bisectorPoint.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, bisectorPoint.X, bisectorPoint.Y + 10);
+                // 画出角平分线
+                g.DrawLine(pen, start, bisectorPoint);
+
+
+            }
+        }
+
+        // 在一个正方形ABCD或者矩形内任取一个点O  测试通过
+        public void DrawFreePoint(string A, string B, string C, string D, string O)
+        {
+            if(g != null)
+            {
+                // 拿来装A B C D点坐标
+                Point pointA = new Point();
+                Point pointB = new Point();
+                Point pointC = new Point();
+                Point pointD = new Point();
+                Point pointO = new Point();
+
+                pointA = nameToPoint[A];
+                pointB = nameToPoint[B];
+                pointC = nameToPoint[C];
+
+                Random rand = new Random();
+                pointO.X = rand.Next(pointA.X, pointB.X);
+                pointO.Y = rand.Next(pointA.Y, pointC.Y);
+                // 生成新点之后要加入点集合中
+                nameToPoint.Add(O, pointO);
+
+                // 拿到要画的点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black, pointO.X, pointO.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, pointO.X, pointO.Y + 10);
+
+
+            }
+        }
+        // 画一个不规则的四边形 比如凸四边形ABCD 测试通过
+        public void DrawTuSquare(string A, string B, string C, string D)
+        {
+            if (g != null)
+            {
+                // 构造四个点
+                Point A1 = new Point(150, 110);
+                Point A2 = new Point(450, 50);
+                Point A3 = new Point(150, 300);
+                Point A4 = new Point(450, 300);
+
+                // 加入词典 把左边
+                nameToPoint.Add(A, A1);
+                nameToPoint.Add(B, A2);
+                nameToPoint.Add(C, A3);
+                nameToPoint.Add(D, A4);
+
+                // 画点
+                FreePoint(A);
+                FreePoint(B);
+                FreePoint(C);
+                FreePoint(D);
+
+                // 连接点
+                DrawLineAB(A, B);
+                DrawLineAB(B, D);
+                DrawLineAB(D, C);
+                DrawLineAB(C, A);
+            }
+        }
+
+        //在已知的一个四边形中，在其中的AB一条边的外边画一个点C 测试通过
+        public void DrawPointOutSide(string A, string B, string C)
+        {
+            // 要画的这个点是距离这条边的中点位置50个单位远
+            if (g != null)
+            {
+
+                // 拿来装A B两点坐标
+                Point pointA = new Point();
+                Point pointB = new Point();
+                // C是用来存放中点
+                Point pointC = new Point();
+
+                pointA = nameToPoint[A];
+                pointB = nameToPoint[B];
+                pointC.X = (pointA.X + pointB.X) / 2 + 50;
+                pointC.Y = (pointA.Y + pointB.Y) / 2;
+                // 要显示在画布上的中点 都要加入坐标字典中
+                nameToPoint.Add(C, pointC);
+
+                // 拿到要画交点
+                string text = C;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                // 显示字母
+                g.FillEllipse(Brushes.Black,pointC.X, pointC.Y, 4, 4);
+                g.DrawString(text, textFont, textBrush, pointC.X, pointC.Y + 10);
+
+            }
+        }
 
         // 显示三角形ABC的垂心 O   测试通过
         public void DrawVerticalCenter(string A, string B, string C, string O)
@@ -504,6 +1388,7 @@ namespace GDI
                 {
                     // 随机一个点
                     Random rand = new Random();
+                    // 给定区间的的任意点
                     Point randPoint = new Point(rand.Next(Test.test.pictureBox1.Width), rand.Next(Test.test.pictureBox1.Height));
                     // 把该点 加入词典 注意每次得到一个新点 要记住加到词典里
                     nameToPoint.Add(text, randPoint);
@@ -780,6 +1665,13 @@ namespace GDI
 
             }
         }
+
+
+
+
+
+
+
 
 
 

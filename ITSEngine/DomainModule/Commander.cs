@@ -27,7 +27,7 @@ namespace ITS.DomainModule
         //static DateTime dt = DateTime.Now;
         //static string directory = @"C:\Users\Administrator\Desktop\老师项目\image\test.png";
         //const string fileName ="test.png";
-        const string imagePath = @"C:\Users\Administrator\Desktop\老师项目\image\test.png";
+        const string imagePath = @"C:\Users\10114\Desktop\老师项目\image\test.png";
 
        
 

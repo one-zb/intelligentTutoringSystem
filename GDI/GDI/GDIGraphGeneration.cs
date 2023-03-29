@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace GDI
 {
-     class GDIGraphGeneration
+     public class GDIGraphGeneration
     {
         ShapeFactory shapeFactory = new ShapeFactory();
         GDIGraphNode currentGDIGraph = new GDIGraphNode();
@@ -33,6 +33,7 @@ namespace GDI
             nameTransformDic.Add("玻璃管", new List<string>() { "GlassTube", "0", "0" });
             nameTransformDic.Add("短玻璃管", new List<string>() { "GlassTube", "0", "0" });
             nameTransformDic.Add("长玻璃管", new List<string>() { "GlassTube", "1", "1" });
+            nameTransformDic.Add("试管", new List<string>() { "TestTube", "0", "0" });
             //英文到中文
             nameTransformDic2.Add( "Beaker","烧杯");//第一个系数 为图元名称 后面为 mode 具体的图元子类的选择
             nameTransformDic2.Add("AsbestosNet","石棉网");
@@ -43,21 +44,25 @@ namespace GDI
             nameTransformDic2.Add( "Funnel","漏斗");
             nameTransformDic2.Add(  "GlassRod","玻璃棒");
             nameTransformDic2.Add( "GlassTube","玻璃管");
+            nameTransformDic2.Add("TestTube", "试管");
+
             //已有的组合图元
-            shapeList.Add("IronSupport_Flask");
-            shapeList.Add("IronSupport_Flask_Funnel");
-            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp_AsbestosNet");
-            shapeList.Add("IronSupport_Funnel_TestTube");
-            shapeList.Add("Flask_Funnel");
-            shapeList.Add("TestTube_Funnel");
-            shapeList.Add("GlassTube_Flask_GlassTube");
-            shapeList.Add("TestTube_GlassTube");
-            shapeList.Add("GlassTube_Bottle_GlassTube");
-            shapeList.Add("Beaker_GlassRod");
-            shapeList.Add("IronSupport_Flask_AlcoholLamp_AsbestosNet");
-            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp");
-            shapeList.Add("IronSupport_Flask_AlcoholLamp");
-           
+            shapeList.Add("IronSupport_Flask"); // 铁架台 反应瓶
+            shapeList.Add("IronSupport_AlcoholLamp"); // 铁架台 酒精灯
+            shapeList.Add("IronSupport_AlcoholLamp_AsbestosNet"); // 铁架台 酒精灯 石棉网
+            shapeList.Add("IronSupport_Flask_Funnel"); // 铁架台 反应瓶 漏斗
+            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp_AsbestosNet"); // 铁架台 反应瓶 漏斗 酒精灯 石棉网
+            shapeList.Add("IronSupport_Funnel_TestTube"); // 铁架台 漏斗 试管
+            shapeList.Add("Flask_Funnel"); // 反应瓶 漏斗
+            shapeList.Add("TestTube_Funnel"); // 试管 漏斗
+            shapeList.Add("GlassTube_Flask_GlassTube"); // 玻璃管 反应瓶 玻璃管
+            shapeList.Add("GlassTube_Bottle_GlassTube"); // 玻璃管 广口瓶 玻璃管
+            shapeList.Add("Beaker_GlassRod"); // 烧杯 玻璃棒
+            shapeList.Add("IronSupport_Flask_AlcoholLamp_AsbestosNet"); // 铁架台 反应瓶 酒精灯 石棉网
+            shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp"); // 铁架台 反应瓶 漏斗 酒精灯
+            shapeList.Add("IronSupport_Flask_AlcoholLamp"); // 铁架台 反应瓶 酒精灯
+            //shapeList.Add("TestTube_GlassTube"); // 试管 玻璃管  这个暂时不要组合 直接按个独立生成即可 
+
         }
         //匹配备选队列最佳图元  选择出对列中包含用户要画的图形最多的组合图形 
         private List<string> getLongGraph(Queue<List<string>> myQueue,List<string> gdiGraph,int index) 
@@ -160,7 +165,7 @@ namespace GDI
             List<string> alternativeGraph;
 
             //对于用户传入的图器件数组进行后序遍历 先拿出数组最后一个图元
-            for (int i = gdiGraph.Count-1; i >0; --i)
+            for (int i = gdiGraph.Count-1; i >= 0; --i)
             {
                 
                 //用户传进来的中文 这里转换成英文 从 MAP集合中取出 该图元对象信息
@@ -185,7 +190,7 @@ namespace GDI
 
                  
                 //从这个包含图元的所有组合图形的队列 选取最长的的组合图形 i是传入的图元数组最后一个下标
-                 alternativeGraph = getLongGraph(gdiQueue, gdiGraph, i);
+                alternativeGraph = getLongGraph(gdiQueue, gdiGraph, i);
 
                 if (alternativeGraph==null)// Todo 画单个图像
                 {
@@ -225,8 +230,8 @@ namespace GDI
                 {
 
                     // alternativeGraph 集合三个对象对象格式：[组合图形("IronSupport_Flask")  "0", "0" ]
-                    //确认选择哪个组合图元
-                    i = i - alternativeGraph[0].Split('_').ToList().Count+1;//如果i=0说明图形已经完成了
+                    //确认选择哪个组合图元 例如这里传进来三个元件 0 1 2  然后刚好后面两个是组合图形，那么下一个循环i 就要从 0 开始遍历绘制
+                    i = i - alternativeGraph[0].Split('_').ToList().Count + 1;//如果i=0说明还剩 索引为0 这第一个元件需要绘制了 但是要记住 这个i 到下一轮循环会自动减1，这是在for循环里，所以要加1 千万要注意
                     if (currentGDIGraph.connectPointsDic.Count==0)//没有联接点说明，是第一个画的图元
                     {
                         ChemistryGdi shape = shapeFactory.getShape(g, alternativeGraph[0], 100, 300,int.Parse(alternativeGraph[1]),int.Parse( alternativeGraph[2]));//初始化第一个实例的器材
@@ -288,6 +293,10 @@ namespace GDI
                 return new AsbestosNet(graphic, x, y);
             else if (shapeType == "IronSupport_Flask")
                 return new IronSupport_Flask(graphic, x, y,mode1);
+            else if (shapeType == "IronSupport_AlcoholLamp")
+                return new IronSupport_AlcoholLamp(graphic, x, y, mode1);
+            else if (shapeType == "IronSupport_AlcoholLamp_AsbestosNet")
+                return new IronSupport_AlcoholLamp_AsbestosNet(graphic, x, y, mode1);
             else if (shapeType == "IronSupport_Flask_Funnel")
                 return new IronSupport_Flask_Funnel(graphic, x, y,mode1,mode2);
             else if (shapeType == "IronSupport_Flask_AlcoholLamp")

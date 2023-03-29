@@ -76,12 +76,13 @@ namespace FVCClient
 
             if(quest.HasImageFiles())
             {
+                Paragraph paragraph = new Paragraph();
                 List<Image> images = LoadImages(quest);
                 foreach(var image in images)
                 {
                     InlineUIContainer container = new InlineUIContainer(image);
-                    Paragraph paragraph = new Paragraph(container);
-                    image.Width = 450;
+                    paragraph.Inlines.Add(container); // 测试一行展示多个图片
+                    image.Width = 450; // 最初设置是450 高清图片
                     paragraph.LineHeight = 2;
                     
                     //image.Height = 200;
