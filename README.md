@@ -10,3 +10,5 @@
 
 1. `fileManager`类中的 `DataPath` 要改成自己的知识库存储地址。
 2. `Commander`类中的 `imagePath` 要改成自己图片存储地址。
+2. `CircuitGeneration`类中的 `imagePath` 要修改自己图片存储地址。
+2. `ExperimentsGraph`类中的 `imagePath` 要改成自己图片存储地址。
