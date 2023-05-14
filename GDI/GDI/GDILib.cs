@@ -216,7 +216,7 @@ namespace GDI
         {
             if(g != null)
             {
-                List<string> gdiGraph = new List<string>() { "二氧化硫制备实验反应装置", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "石棉网", "酒精灯", "分液漏斗", "锥形瓶", "铁架台" };
+                List<string> gdiGraph = new List<string>() {"烧杯", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "石棉网", "酒精灯", "分液漏斗", "锥形瓶", "铁架台" };
                 //"二氧化硫制备实验反应装置""烧杯", "玻璃管", "石棉网", "酒精灯", "铁架台", "锥形瓶", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "分液漏斗", "反应瓶", "铁架台"
                 //"广口瓶","玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "广口瓶", "玻璃管", "石棉网", "酒精灯", "分液漏斗", "锥形瓶", "铁架台" 
                 GDIGraphGeneration gdiGeneration = new GDIGraphGeneration();
@@ -1177,7 +1177,7 @@ namespace GDI
 
 
         // 构造一个已知三角形的外接圆 测试通过
-        public void DrawOutCircle(string A, string B, string C)
+        public void DrawOutCircle(string A, string B, string C, string O)
         {
             if(g != null)
             {
@@ -1213,10 +1213,18 @@ namespace GDI
 
                 // 调用获取圆心和半径的方法
                 GetTriangleExcenterRadius(pointA, pointB, pointC, out R, out center);
+              
 
                 //  g.DrawEllipse(p, 50, 50, 200, 200);
                 //这里50,50指椭圆的边框的左上角的 X ，Y坐标，200,200指椭圆的宽和高。
                 Pen pen = new Pen(Color.Black);
+                // 显示圆心字母
+                // 拿到要画交点
+                string text = O;
+                Font textFont = new Font("宋体", 12);
+                SolidBrush textBrush = new SolidBrush(Color.Black);
+                g.DrawString(text, textFont, textBrush, center.X, center.Y + 10);
+                g.FillEllipse(Brushes.Black, center.X, center.Y, 4, 4);
                 g.DrawEllipse(pen, (float)(center.X - R), (float)(center.Y - R), (float)(2 * R), (float)(2 * R));
 
 

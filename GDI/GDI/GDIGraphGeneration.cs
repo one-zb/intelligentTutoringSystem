@@ -34,8 +34,11 @@ namespace GDI
             nameTransformDic.Add("短玻璃管", new List<string>() { "GlassTube", "0", "0" });
             nameTransformDic.Add("长玻璃管", new List<string>() { "GlassTube", "1", "1" });
             nameTransformDic.Add("试管", new List<string>() { "TestTube", "0", "0" });
+            nameTransformDic.Add("三口烧瓶", new List<string>() { "ThreeNeckedFlask", "0", "0" });
+            nameTransformDic.Add("u型管", new List<string>() { "U_Tube", "0", "0" });
+
             //英文到中文
-            nameTransformDic2.Add( "Beaker","烧杯");//第一个系数 为图元名称 后面为 mode 具体的图元子类的选择
+            nameTransformDic2.Add("Beaker","烧杯");//第一个系数 为图元名称 后面为 mode 具体的图元子类的选择
             nameTransformDic2.Add("AsbestosNet","石棉网");
             nameTransformDic2.Add("AlcoholLamp","酒精灯");
             nameTransformDic2.Add("IronSupport","铁架台");
@@ -44,7 +47,9 @@ namespace GDI
             nameTransformDic2.Add( "Funnel","漏斗");
             nameTransformDic2.Add(  "GlassRod","玻璃棒");
             nameTransformDic2.Add( "GlassTube","玻璃管");
-            nameTransformDic2.Add("TestTube", "试管");
+            nameTransformDic2.Add("TestTube", "试管"); //U_Tube
+            nameTransformDic2.Add("ThreeNeckedFlask", "三口烧瓶");
+            nameTransformDic2.Add("U_Tube", "u型管");
 
             //已有的组合图元
             shapeList.Add("IronSupport_Flask"); // 铁架台 反应瓶
@@ -257,7 +262,8 @@ namespace GDI
                     }
                 }
             }
-            g.DrawString(gdiGraph[0], new Font("宋体", 20, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 200, 20);
+            // 在屏幕上显示传入进来的第一个仪器的名字
+            //g.DrawString(gdiGraph[0], new Font("宋体", 20, FontStyle.Regular, GraphicsUnit.Pixel), Brushes.Black, 200, 20);
         }
         
     }
@@ -291,6 +297,10 @@ namespace GDI
                 return new GlassTube(graphic, x, y,mode1);
             else if (shapeType == "AsbestosNet")
                 return new AsbestosNet(graphic, x, y);
+            else if (shapeType == "ThreeNeckedFlask")
+                return new ThreeNeckedFlask(graphic, x, y);
+            else if (shapeType == "U_Tube")
+                return new U_Tube(graphic, x, y);
             else if (shapeType == "IronSupport_Flask")
                 return new IronSupport_Flask(graphic, x, y,mode1);
             else if (shapeType == "IronSupport_AlcoholLamp")
