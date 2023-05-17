@@ -1182,7 +1182,7 @@ namespace GDI
         private float width;
         private float height;
         private float span;
-        public U_Tube(Graphics g,float x1,float y1, float size, float angle = 0)
+        public U_Tube(Graphics g,float x1,float y1, float size = 10, float angle = 0)
         {
             width=6 * size;
             height=6 * size;
@@ -1400,7 +1400,7 @@ namespace GDI
         private float radius;
         private float width;
         private float height;
-        public ThreeNeckedFlask(Graphics g, float x1, float y1, float size = 10, float angle = 0) 
+        public ThreeNeckedFlask(Graphics g, float x1, float y1, float size = 15, float angle = 0) 
         {
             width = size;
             height = size*2;
@@ -1758,7 +1758,7 @@ namespace GDI
         private float height;
 
         // 这里传进来的x1, y1是指元件中心位置的坐标
-        public Ammeter(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        public Ammeter(Graphics g, float x1, float y1, float size = 15, float angle = 0)
         {
             width = 2 * size;
             height = 2 * size;
@@ -1801,7 +1801,7 @@ namespace GDI
     {
         private float width;
         private float height;
-        public Voltmeter(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        public Voltmeter(Graphics g, float x1, float y1, float size = 15, float angle = 0)
         {
             width = 2 * size;
             height = 2 * size;
@@ -1895,7 +1895,7 @@ namespace GDI
     {
         private float width;
         private float height;
-        public SlidingRheostat(Graphics g, float x1, float y1, float size = 10, float angle = 0, float scale = 0.3f, bool isLeft = false)
+        public SlidingRheostat(Graphics g, float x1, float y1, float size = 15, float angle = 0, float scale = 0.3f, bool isLeft = false)
         {
             width = size * 2;
             height = size;
@@ -1929,7 +1929,7 @@ namespace GDI
         private Line l2;
         private float width;
         private float height;
-        public Bulb(Graphics g,float x1,float y1,float size = 10, float angle = 0)
+        public Bulb(Graphics g,float x1,float y1,float size = 15, float angle = 0)
         {
             width = size * 2;
             height = size * 2;
@@ -1965,7 +1965,7 @@ namespace GDI
     {
         private float width;
         private float height;
-        public Switch(Graphics g, float x1, float y1, float size = 10, float angle = 0, bool isClosed = false)
+        public Switch(Graphics g, float x1, float y1, float size = 15, float angle = 0, bool isClosed = false)
         {
             width = size;
             height = size;
@@ -1994,7 +1994,7 @@ namespace GDI
     {
         private float width;
         private float height;
-        public Power(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        public Power(Graphics g, float x1, float y1, float size = 15, float angle = 0)
         {
             width = size;
             height = size;

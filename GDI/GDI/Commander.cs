@@ -1052,11 +1052,11 @@ namespace GDI
 
         // 画已知三角形的外接圆 测试通过
         [CMD("outcircle", "外接圆")]
-        static public void DrawOutCircle(string A, string B, string C, int flag)
+        static public void DrawOutCircle(string A, string B, string C, string O, int flag)
         {
 
             //myGDI = new GDILib(Test.test.pictureBox1.CreateGraphics());
-            myGDI.DrawOutCircle(A, B, C);
+            myGDI.DrawOutCircle(A, B, C, O);
             if (flag == 1)
             {
                 bmp.Save(imagePath);

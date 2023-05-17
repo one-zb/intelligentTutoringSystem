@@ -85,6 +85,7 @@ namespace FVCClient
                     image.Width = 450; // 最初设置是450 高清图片
                     paragraph.LineHeight = 2;
                     
+                    
                     //image.Height = 200;
                     _textBox.Document.Blocks.Add(paragraph);
 

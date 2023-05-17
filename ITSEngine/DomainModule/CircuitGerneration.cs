@@ -303,9 +303,11 @@ namespace ITS.DomainModule
                     }
                     if(circutiConnections.ContainsKey(rowLeftConnections[0]))
                     {
+                        // 判断下第一行第一个元件的左连接点是否有连接对象，如果有，那么就直接在这个key上添加
                         circutiConnections[rowLeftConnections[0]].Add(rowLeftConnections[rowLeftConnections.Count - 1]);
                     } else
                     {
+                        // 如果没有，那需要新建key，然后把第一行第一个元件的左连接点 连接到最后一行的第一个元件的左连接点，相当于画一条直线下来
                         circutiConnections.Add(rowLeftConnections[0], new List<PointF>() { rowLeftConnections[rowLeftConnections.Count - 1] });
                     }
                    

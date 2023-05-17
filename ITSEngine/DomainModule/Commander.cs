@@ -235,11 +235,11 @@ namespace ITS.DomainModule
 
         // 画已知三角形的外接圆 测试通过
         [CMD("outcircle")]
-        static public void DrawOutCircle(string A, string B, string C)
+        static public void DrawOutCircle(string A, string B, string C, string O)
         {
 
             //myGDI = new GDILib(Test.test.pictureBox1.CreateGraphics());
-            myGDI.DrawOutCircle(A, B, C);
+            myGDI.DrawOutCircle(A, B, C, O);
 
         }
 
