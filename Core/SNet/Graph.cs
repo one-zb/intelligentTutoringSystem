@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace GDI
+namespace KRLab.Core.SNet
 {
     class Graph
     {
@@ -87,7 +88,6 @@ namespace GDI
             equipmentConGraph.AddEdge(5, 6);
             equipmentConGraph.AddEdge(6, 7);
             equipmentConGraph.AddEdge(9, 10);
-            equipmentConGraph.AddEdge(8, 9);
             equipmentToNumber.Add("烧杯", 0);
             equipmentToNumber.Add("锥形瓶", 1);
             equipmentToNumber.Add("圆底烧瓶", 1);
@@ -104,19 +104,22 @@ namespace GDI
             equipmentToNumber.Add("玻璃管", 8);
             equipmentToNumber.Add("u型管", 9);
             equipmentToNumber.Add("水槽", 10);
-
-
         }
 
         // 判断拿到的图形 与已经画出来的图形 是否能链接
         public bool IsConnect(string equip1, string equip2)
         {
-
+            bool canConnected = false;
             //拿到图元到的编号 这个编号是提前定义好的数字 代表图元
-            int i = equipmentToNumber[equip1];
-            int j = equipmentToNumber[equip2];
-            bool canConnected = equipmentConGraph.IsConnectBase(i, j);
+            if (equipmentToNumber.ContainsKey(equip1) && equipmentToNumber.ContainsKey(equip2))
+            {
+                int i = equipmentToNumber[equip1];
+                int j = equipmentToNumber[equip2];
+                canConnected = equipmentConGraph.IsConnectBase(i, j);
+            }
+            
             return canConnected;
         }
     }
 }
+

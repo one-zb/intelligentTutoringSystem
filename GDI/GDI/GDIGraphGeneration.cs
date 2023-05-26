@@ -36,6 +36,7 @@ namespace GDI
             nameTransformDic.Add("试管", new List<string>() { "TestTube", "0", "0" });
             nameTransformDic.Add("三口烧瓶", new List<string>() { "ThreeNeckedFlask", "0", "0" });
             nameTransformDic.Add("u型管", new List<string>() { "U_Tube", "0", "0" });
+            nameTransformDic.Add("水槽", new List<string>() { "Sink", "0", "0" });
 
             //英文到中文
             nameTransformDic2.Add("Beaker","烧杯");//第一个系数 为图元名称 后面为 mode 具体的图元子类的选择
@@ -50,6 +51,7 @@ namespace GDI
             nameTransformDic2.Add("TestTube", "试管"); //U_Tube
             nameTransformDic2.Add("ThreeNeckedFlask", "三口烧瓶");
             nameTransformDic2.Add("U_Tube", "u型管");
+            nameTransformDic2.Add("Sink", "水槽");
 
             //已有的组合图元
             shapeList.Add("IronSupport_Flask"); // 铁架台 反应瓶
@@ -66,7 +68,8 @@ namespace GDI
             shapeList.Add("IronSupport_Flask_AlcoholLamp_AsbestosNet"); // 铁架台 反应瓶 酒精灯 石棉网
             shapeList.Add("IronSupport_Flask_Funnel_AlcoholLamp"); // 铁架台 反应瓶 漏斗 酒精灯
             shapeList.Add("IronSupport_Flask_AlcoholLamp"); // 铁架台 反应瓶 酒精灯
-            //shapeList.Add("TestTube_GlassTube"); // 试管 玻璃管  这个暂时不要组合 直接按个独立生成即可 
+            //shapeList.Add("TestTube_GlassTube"); // 试管 玻璃管  这个暂时不要组合 直接按个独立生成即可
+             
 
         }
         //匹配备选队列最佳图元  选择出对列中包含用户要画的图形最多的组合图形 
@@ -94,7 +97,7 @@ namespace GDI
                 List<string> temp1 = tempGraph[0].Split('_').ToList();
 
                 //判断组合图形英文 IronSupport_Flask 分割后的 单词（单个图元）数量 是否大于等于用书传入数组长度 
-                if (temp1.Count >= (index+1)) continue; // index + 1 = 用户传入的数组长度
+                if (temp1.Count > (index+1)) continue; // index + 1 = 用户传入的数组长度
                 for (int i = 0; i < temp1.Count; i++)
                 {
 
@@ -220,6 +223,8 @@ namespace GDI
                                 //这个 if 是判断当前拿到的图形与 图中已经画出来的图形 是否能链接
                                 List<PointF> p = GDIAuxiliary.GetInstance().gdiDic[equipInfo[0]];
                                 ChemistryGdi shape = shapeFactory.getShape(g, equipInfo[0], currentGDIGraph.connectPointsDic[res.Key][0].X - p[0].X, currentGDIGraph.connectPointsDic[res.Key][0].Y - p[0].Y, int.Parse(equipInfo[1]), int.Parse(equipInfo[2]));
+                                // 已经有个图形，然后再组合一个图形，那么先把已经存在的图形连接点删掉，然后把这个新加的图形的连接点信息更新进去
+                                // 这样下次再直接判断这个新图形跟另外的图形能否连接，这样组装顺序
                                 currentGDIGraph.connectPointsDic.Remove(res.Key);
                                 currentGDIGraph.connectPointsDic.Add(equipInfo[0], new List<PointF>() { shape.connectPoints[1] });
                                 break;
@@ -246,18 +251,26 @@ namespace GDI
                     {
                         foreach (KeyValuePair<string, List<PointF>> res in currentGDIGraph.connectPointsDic)
                         {
-                            if (deviceGraph.IsConnect(nameTransformDic2[equipInfo[0]], nameTransformDic2[res.Key]))
+
+                            List<string> graph = alternativeGraph[0].Split('_').ToList();
+                            foreach(string s in graph)
                             {
-                                List<PointF> p = GDIAuxiliary.GetInstance().gdiDic[equipInfo[0]];
-                                ChemistryGdi shape = shapeFactory.getShape(g, alternativeGraph[0], currentGDIGraph.connectPointsDic[res.Key][0].X - p[0].X, currentGDIGraph.connectPointsDic[res.Key][0].Y - p[0].Y, int.Parse(alternativeGraph[1]), int.Parse(alternativeGraph[2]));
-                                currentGDIGraph.connectPointsDic.Remove(res.Key);
-                                currentGDIGraph.connectPointsDic.Add(equipInfo[0], new List<PointF>() { shape.connectPointsDic[equipInfo[0]][1] });
-                                break;
+                                if (deviceGraph.IsConnect(nameTransformDic2[s], nameTransformDic2[res.Key]))
+                                {
+                                    List<PointF> p = GDIAuxiliary.GetInstance().gdiDic[s];
+                                    ChemistryGdi shape = shapeFactory.getShape(g, alternativeGraph[0], currentGDIGraph.connectPointsDic[res.Key][0].X - p[0].X, currentGDIGraph.connectPointsDic[res.Key][0].Y - p[0].Y, int.Parse(alternativeGraph[1]), int.Parse(alternativeGraph[2]));
+                                    currentGDIGraph.connectPointsDic.Remove(res.Key);
+                                    currentGDIGraph.connectPointsDic.Add(s, new List<PointF>() { shape.connectPointsDic[s][1] });
+                                    break;
+                                }
+                                else
+                                {
+                                    //throw new ArgumentNullException(equipInfo[0] + "与" + res.Key + "不可组装");
+                                }
                             }
-                            else
-                            {
-                                //throw new ArgumentNullException(equipInfo[0] + "与" + res.Key + "不可组装");
-                            }
+                            break;
+                            
+                            
                         }
                     }
                 }
@@ -301,6 +314,8 @@ namespace GDI
                 return new ThreeNeckedFlask(graphic, x, y);
             else if (shapeType == "U_Tube")
                 return new U_Tube(graphic, x, y);
+            else if (shapeType == "Sink")
+                return new Sink(graphic, x, y);
             else if (shapeType == "IronSupport_Flask")
                 return new IronSupport_Flask(graphic, x, y,mode1);
             else if (shapeType == "IronSupport_AlcoholLamp")

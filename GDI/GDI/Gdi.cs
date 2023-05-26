@@ -1190,21 +1190,30 @@ namespace GDI
             this.x = x1 ;
             this.y = y1 ;
             graphics = g;
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4); // 测试连接点
             Rotate(angle);
             graphics.DrawArc(pen, x1 - width / 2, y1 - height, width, height, 0, 180);
             graphics.DrawArc(pen, x1 - width / 2+span, y1 - height+span, width-2*span, height-2*span, 0, 180);
             PointF[] pointsRight={new PointF(x1 + width / 2-span, y1 -height/2),new PointF(x1 + width / 2-span, y1 -height*1.3f),new PointF(x1 + width / 2, y1 -height*1.3f),new PointF(x1 + width / 2, y1 - height/2)};
             PointF[] pointsLeft = { new PointF(x1 - width / 2 + span, y1 - height / 2), new PointF(x1 - width / 2 + span, y1 - height*1.3f), new PointF(x1 - width / 2, y1 - height*1.3f), new PointF(x1 - width / 2, y1 - height/2) };
+            PointF cp1 = new PointF(x1 -width / 2 + span / 2, y1 - height * 1.3f);
+            PointF cp2 = new PointF(x1, y1); // 水槽连接U型管的点 在底部中间,也就是该图形的中心点,所以连接点到中心点的距离就是0
+            connectPoints.Add(cp1); // u型管第一个连接点在第一个入口 第二个连接点在底部中间，用来连接水槽
+            connectPoints.Add(cp2);
+            System.Diagnostics.Debug.WriteLine(ShowCentertoPointsSpan(this));
             graphics.DrawLines(pen, pointsRight);
             graphics.DrawLines(pen, pointsLeft);
+            
+            
         }
+
     }          //todo
-    public class Sink : ChemistryGdi  //水槽               //todo
+    public class Sink2 : ChemistryGdi  //圆形水槽               //todo
     {
         private float width;
         private float height;
         private float radius;
-        public Sink(Graphics g,float x1,float y1, float size, float angle = 0)
+        public Sink2(Graphics g,float x1,float y1, float size = 10, float angle = 0)
         {
             width=8 * size;
             height=4 * size;
@@ -1220,7 +1229,43 @@ namespace GDI
             graphics.DrawArc(pen, x1 - width * 0.6f, y1 - height * 1.25f, width * 1.2f, height / 2, 0, 360);
             graphics.DrawArc(pen, x1 - width * 0.5f, y1 - height * 1.15f, width , height / 3, 0, 360);
         }
-    }                      
+    }
+    public class Sink : ChemistryGdi  //矩形水槽               //todo
+    {
+        private float width;
+        private float height;
+        private float radius; // 半径
+        public Sink(Graphics g, float x1, float y1, float size = 10, float angle = 0)
+        {
+            width = 12 * size;
+            height = 6 * size;
+            radius = size;
+            this.x = x1;
+            this.y = y1;
+            PointF cp1 = new PointF(x1, y1 + height / 2); // 水槽连接U型管的点 在底部中间
+            PointF cp2 = new PointF(x1, y1 + height / 2); // 第二个连接点也是这个 同上
+            connectPoints.Add(cp1);
+            connectPoints.Add(cp2);
+            graphics = g;
+            Rotate(angle);
+            graphics.DrawRectangle(pen, x1 - width / 2, y1 - height / 2, width, height);
+            DrawLiquid();
+            //System.Diagnostics.Debug.WriteLine(ShowCentertoPointsSpan(this)); // 用来输出连接点到中心点的距离
+            //graphics.FillEllipse(Brushes.Black, connectPoints[0].X, connectPoints[0].Y, 4, 4); // 测试连接点
+
+
+        }
+        public void DrawLiquid() // 显示液体效果
+        {
+            float x, y, span;
+            x = centerPoint.X - width / 2;
+            y = centerPoint.Y - (height + 3 * radius) * 0.6f;
+            span = 10f;
+            graphics.DrawLine(pen, x, y + 5 * span, x + width, y + 5 * span);
+            ShowLiquid(x, y + 6 * span, x + width, y + 6 * span); // 这个函数就是在两个点之间 画虚线 一段段的
+            ShowLiquid(x, y + span * 7, x + width, y + span * 7);
+        }
+    }
     public class WatchGlass : ChemistryGdi //表面皿
     {
         private float width;
@@ -1312,6 +1357,7 @@ namespace GDI
             graphics.DrawLine(pen, x1 + width / 3, y1-height/2, x1 + width / 3, y1 + height/2);
             graphics.DrawArc(pen, x1 - width / 3, y1 - height / 2 - width / 3, width*2 / 3, width*2 / 3, 180, 180);
             graphics.DrawArc(pen, x1 - width / 3, y1 + height / 2 - width / 3, width*2 / 3, width*2 / 3, 0, 180);
+
         }
     }           
     public class NarrowNeckedBottle : ChemistryGdi //细口瓶
@@ -1433,10 +1479,10 @@ namespace GDI
         private float height;
         public GlassTube(Graphics g, float x1, float y1, int mode = 0, float size = 10, float angle = 0)
         {
-            width=size*7;
-            heightTube = size/2;
-            height=size*12;
-            this.x = x1 ;
+            width=size*7; // 初始值为7
+            heightTube = size / 2;
+            height=size*12; // 初始值为12
+            this.x = x1 ; 
             this.y = y1 ;
             PointF cP1 = new PointF(x - width / 2 - heightTube, y + (heightTube / 2 + height * 0.4f)/2);
             PointF cP2 = mode == 0 ? new PointF(x + width / 2 + heightTube, y + (heightTube + height) / 4.5f) : new PointF(x + width / 2 + heightTube, y + (heightTube + height) / 1.8f);
@@ -1453,7 +1499,7 @@ namespace GDI
             if (mode==0)
             {
                graphics.DrawLine(pen, x + width / 2, y + heightTube / 2, x + width / 2, y + heightTube / 2 + height*0.6f);//左
-                graphics.DrawLine(pen, x + width / 2 + heightTube, y , x + width / 2 + heightTube, y + heightTube / 2 + height*0.6f);//右
+               graphics.DrawLine(pen, x + width / 2 + heightTube, y , x + width / 2 + heightTube, y + heightTube / 2 + height*0.6f);//右
             }
             else
             {
@@ -1498,7 +1544,9 @@ namespace GDI
             this.y = (ironSupport.centerPoint.Y + flask.centerPoint.Y) / 2;
             connectPointsDic.Add("Flask", new List<PointF>() { flask.connectPoints[0], flask.connectPoints[1]});
             connectPointsDic.Add("IronSupport", new List<PointF>() {ironSupport.connectPoints[1],ironSupport.connectPoints[2] });
+            System.Diagnostics.Debug.WriteLine("输出组合图形");
         }
+        
     }
     public class IronSupport_Flask_Funnel : ChemistryGdi //铁架台 反应瓶 漏斗
     {
@@ -1568,14 +1616,39 @@ namespace GDI
             this.x = (ironSupport.centerPoint.X + flask.centerPoint.X ) / 2;
             this.y = (ironSupport.centerPoint.Y + flask.centerPoint.Y ) / 2;
             connectPointsDic.Add("Flask", new List<PointF>() { flask.connectPoints[0], flask.connectPoints[1] });
-            connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1]});
+            connectPoints.Add(flask.connectPoints[0]); // 将这个作为一个整体的连接点 就是反应瓶
+            connectPoints.Add(flask.connectPoints[1]);
+            //connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1]}); 这里应该只保留反应瓶的连接点作为组合图形的连接点
+            System.Diagnostics.Debug.WriteLine(ShowCentertoPointsSpan(this)); // 用来输出连接点到中心点的距离
             if (isLiquid)
             {
                 flask.DrawLiquid();
                 alcoholLamp.DrawLiquid();
             }
         }
-    }//铁架台 反应瓶 酒精灯
+    }
+    public class IronSupport_ConeFlask_AlcoholLamp : ChemistryGdi //铁架台 锥形瓶 酒精灯
+    {
+        public IronSupport_ConeFlask_AlcoholLamp(Graphics g, float x1, float y1, int mode1 = 0, bool isLiquid = false, float size = 10, float angle = 0)
+        {
+            List<PointF> I = GDIAuxiliary.GetInstance().gdiDic["IronSupport"];
+            List<PointF> f = GDIAuxiliary.GetInstance().gdiDic["Flask"];
+            float xAux = x1 - I[0].X;
+            float yAux = y1 - I[0].Y + f[0].Y / 2.2f;
+            IronSupport ironSupport = new IronSupport(g, xAux, yAux, 0.3f, size);
+            Flask flask = new Flask(g, ironSupport.connectPoints[0].X - f[0].X, ironSupport.connectPoints[0].Y - f[0].Y, 3, size);
+            AlcoholLamp alcoholLamp = new AlcoholLamp(g, ironSupport.connectPoints[2].X, ironSupport.connectPoints[2].Y, size);
+            this.x = (ironSupport.centerPoint.X + flask.centerPoint.X) / 2;
+            this.y = (ironSupport.centerPoint.Y + flask.centerPoint.Y) / 2;
+            connectPointsDic.Add("Flask", new List<PointF>() { flask.connectPoints[0], flask.connectPoints[1] });
+            connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1] });
+            if (isLiquid)
+            {
+                flask.DrawLiquid();
+                alcoholLamp.DrawLiquid();
+            }
+        }
+    }
     public class IronSupport_Flask_AlcoholLamp_AsbestosNet : ChemistryGdi //铁架台 反应瓶 酒精灯 石棉网
     {
         public IronSupport_Flask_AlcoholLamp_AsbestosNet(Graphics g, float x1, float y1, int mode1 = 0,bool isLiquid=false, float size = 10, float angle = 0)
@@ -1615,7 +1688,7 @@ namespace GDI
             this.x = (ironSupport.centerPoint.X + flask.centerPoint.X + funnel.centerPoint.X) / 3;
             this.y = (ironSupport.centerPoint.Y + flask.centerPoint.Y + funnel.centerPoint.Y) / 3;
             connectPointsDic.Add("Flask", new List<PointF>() { flask.connectPoints[0], flask.connectPoints[1] });
-            connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1]});
+            //connectPointsDic.Add("IronSupport", new List<PointF>() { ironSupport.connectPoints[1]});
             if (isLiquid)
             {
                 flask.DrawLiquid();

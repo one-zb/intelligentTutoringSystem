@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Utilities;
 using ITSText;
+
  
 
 namespace KRLab.Core.SNet
@@ -88,7 +89,8 @@ namespace KRLab.Core.SNet
         public static void Check(List<IEntity> entities, List<Relationship> relations,
             Action<bool, string> callback)
         {
-            List<IEntity> probNodes = new List<IEntity>();
+            // 验证语义网络构建问题节点下是否有文字描述节点
+            List<IEntity> probNodes = new List<IEntity>(); 
             foreach(var node in entities)
             {
                 if(node.Name=="问题")
@@ -96,6 +98,48 @@ namespace KRLab.Core.SNet
                     probNodes.Add(node);
                 }
             }
+
+            // 在构建化学组合图形语义网络时判断是否能够组合
+            List<IEntity> grahphNodes = new List<IEntity>();
+            foreach (var node in entities)
+            {
+                if(node.Name == "化学图")
+                {
+                    grahphNodes.Add(node);
+                }
+            }
+
+            // 检查化学图节点或者物理图节点下面的元件是否能够组合
+            //foreach(var node in grahphNodes)
+            //{
+            //    bool ok6 = false;
+            //    bool ok7 = false;
+
+            //    List<string> gdiGraph = new List<string>();
+            //    foreach (var r2 in relations)
+            //    {
+            //        SNRelationship snr2 = (SNRelationship)r2;
+                    
+            //        if (snr2.First == node && snr2.SNRelationshipType.ToString() == SNRational.GRANU)
+            //        {
+            //            var graphName = snr2.Second.Name;
+            //            gdiGraph = new List<string>(graphName.ToString().Split('，'));
+            //            DeviceGraph deviceGraph = new DeviceGraph(); // 化学设备可以组合关系
+            //            if (gdiGraph.Count == 1 || deviceGraph.IsConnect(gdiGraph[0], gdiGraph[1])) 
+            //            {
+            //                // 例如 分液漏斗，铁架台，这两个是可以组装的，只需要判断前两个就行
+            //                // 如果前两个不行，那后面也不需要判断，例如分液漏斗，开关，这两个肯定不可以组合
+            //                ok6 = true;
+            //            }
+                        
+            //        }
+            //    }
+            //    if (!ok6)
+            //    {
+            //        callback(false, "化学图部分存在不能组装的化学仪器，请核对！");
+            //        return;
+            //    }
+            //}
 
             foreach(var node in probNodes)
             {

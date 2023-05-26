@@ -26,7 +26,11 @@ namespace GDI
             gdiDic.Add("NarrowNeckedBottle", new List<PointF> { new PointF(-3.08f, -50)});
             gdiDic.Add("Beaker", new List<PointF> { new PointF(0, -50) });
             gdiDic.Add("GlassRod", new List<PointF> { new PointF(0, 40) });
-           
+            gdiDic.Add("U_Tube", new List<PointF> { new PointF(-25, -78), new PointF(0, 0) }); // U型管
+            gdiDic.Add("Sink", new List<PointF> { new PointF(0, 30) }); // 水槽
+            gdiDic.Add("IronSupport_Flask_AlcoholLamp", new List<PointF> { new PointF(102.29f, 233.39f), new PointF(104.29f, 233.39f) });
+
+
         }
         public static GDIAuxiliary GetInstance() 
         {

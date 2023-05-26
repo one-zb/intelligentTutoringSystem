@@ -313,6 +313,7 @@
     <Compile Include="SNet\DomainTopicKRModuleSNet.cs" />
     <Compile Include="SNet\EquationKRModuleSNet.cs" />
     <Compile Include="SNet\FormulaElement.cs" />
+    <Compile Include="SNet\Graph.cs" />
     <Compile Include="SNet\InstrumentKRModuleSNet.cs" />
     <Compile Include="SNet\ISParseInfo.cs" />
     <Compile Include="SNet\KCNames.cs" />

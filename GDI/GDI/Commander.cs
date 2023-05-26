@@ -249,7 +249,7 @@ namespace GDI
         [CMD("三口烧瓶")]
         static public void DrawThreeNeckedFlask(int flag)
         {
-            myGDI.DrawThreeNeckedFlask();
+            myGDI.DrawThreeNeckedFlask ();
             if (flag == 1)
             {
                 bmp.Save(imagePath);

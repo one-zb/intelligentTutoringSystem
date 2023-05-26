@@ -27,11 +27,13 @@ namespace ITS.DomainModule
             SNNode graphNode = topicModule.GetGraphNode();
             List<string> imagesPath = new List<string>();
 
+
             // 拿到当前结论语义网
             ConclusionKRModuleSNet midLineConNet = new ConclusionKRModuleSNet(net.Net);
+            SNNode chemicalImageNode = midLineConNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA");
             // 拿到 与 图 这个节点 连着的DRAW 的节点 也就是要画的图形节点
             //SNNode imageNode = midLineConNet.Net.GetIncomingSource(graphNode, "ISA", "");
-            SNNode imageNode = midLineConNet.Net.GetOutgoingDestination(graphNode, "GRANU", "GRANU"); // 细化语义颗粒
+            SNNode imageNode = midLineConNet.Net.GetOutgoingDestination(chemicalImageNode, "GRANU", "GRANU"); // 细化语义颗粒
             // 先把这第一个图形绘制 单个 组合 两种都可以绘制
             List<string> gdiGraph = new List<string>(imageNode.Name.ToString().Split('，'));
             GDIGraphGeneration gdiGeneration = new GDIGraphGeneration();
