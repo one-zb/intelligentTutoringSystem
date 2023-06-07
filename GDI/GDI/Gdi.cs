@@ -1100,6 +1100,11 @@ namespace GDI
             graphics.DrawLine(pen, x1 - size * 3 / 4, y - size * 5f, x1 - size * 3 / 4, y - size * 6f);
             graphics.DrawLine(pen, x1 + size * 3 / 4, y - size * 5f, x1 + size * 3 / 4, y - size * 6f);
             graphics.DrawEllipse(pen, x1 - size * 3 / 4, y1 - 6.5f * radius, size*1.5f, size);
+            // 火焰
+            Pen pen2 = new Pen(Color.Gold, 2);
+            SolidBrush brush = new SolidBrush(Color.OrangeRed);
+            graphics.DrawEllipse(pen2, x1 - size * 2 / 4, y1 - 6.5f * radius,size,size*1.5f);
+            graphics.FillPie(brush, x1 - size * 2 / 4, y1 - 6.5f * radius, size, size * 1.5f, 180, 180);
         }
         public void DrawLiquid()
         {
@@ -1203,8 +1208,13 @@ namespace GDI
             System.Diagnostics.Debug.WriteLine(ShowCentertoPointsSpan(this));
             graphics.DrawLines(pen, pointsRight);
             graphics.DrawLines(pen, pointsLeft);
-            
-            
+            // 添加两个黑色瓶盖
+            graphics.FillRectangle(Brushes.Black, x1 - width / 2, y1 - height * 1.3f, span,span / 2);
+            graphics.FillRectangle(Brushes.Black, x1 + width / 2 - span, y1 - height * 1.3f, span, span / 2);
+            // 在右边上面添加一个玻璃管
+            PointF[] rightTune = { new PointF(x1 + width / 2 - span*3 / 4, y1 - height * 1f), new PointF(x1 + width / 2 - span * 3 / 4, y1 - height * 2f), new PointF(x1 + width / 2 - span / 4, y1 - height * 2f), new PointF(x1 + width / 2 - span / 4, y1 - height * 1f) };
+            graphics.DrawLines(pen, rightTune);
+
         }
 
     }          //todo

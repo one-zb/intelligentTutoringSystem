@@ -252,7 +252,7 @@ namespace GDI
                         foreach (KeyValuePair<string, List<PointF>> res in currentGDIGraph.connectPointsDic)
                         {
 
-                            List<string> graph = alternativeGraph[0].Split('_').ToList();
+                            List<string> graph = alternativeGraph[0].Split('_').ToList(); // 在可选的组合里 选择可以连接的图形与已存在的组合图形进行连接
                             foreach(string s in graph)
                             {
                                 if (deviceGraph.IsConnect(nameTransformDic2[s], nameTransformDic2[res.Key]))
@@ -325,7 +325,7 @@ namespace GDI
             else if (shapeType == "IronSupport_Flask_Funnel")
                 return new IronSupport_Flask_Funnel(graphic, x, y,mode1,mode2);
             else if (shapeType == "IronSupport_Flask_AlcoholLamp")
-                return new IronSupport_Flask_AlcoholLamp(graphic, x, y,mode1);
+                return new IronSupport_Flask_AlcoholLamp(graphic, x, y,mode1,true);
             else if (shapeType == "IronSupport_Flask_AlcoholLamp_AsbestosNet")
                 return new IronSupport_Flask_AlcoholLamp_AsbestosNet(graphic, x, y,mode1);
             else if (shapeType == "IronSupport_Flask_Funnel_AlcoholLamp_AsbestosNet")
