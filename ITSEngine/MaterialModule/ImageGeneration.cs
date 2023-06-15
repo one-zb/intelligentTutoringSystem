@@ -25,7 +25,8 @@ namespace ITS.MaterialModule
             ConclusionKRModuleSNet midLineConNet = new ConclusionKRModuleSNet(net.Net);
             // 拿到 与 图 这个节点 连着的DRAW 的节点 也就是要画的图形节点
             //SNNode imageNode = midLineConNet.Net.GetIncomingSource(graphNode, "ISA", "");
-            SNNode imageNode = midLineConNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA");
+            SNNode MathImageNode = midLineConNet.Net.GetOutgoingDestination(graphNode, "ISA", "ISA"); // 拿到数学图这个节点
+            SNNode imageNode = midLineConNet.Net.GetOutgoingDestination(MathImageNode, "ISA", "ISA"); // 拿到数学图这个节点出发的ISA节点，图形语义网络
             // 用来装命令集合
             List<string> res = new List<string>();
 
